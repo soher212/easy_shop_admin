@@ -1,0 +1,76 @@
+import 'package:easy_shop_admin/core/theme/app_colors.dart';
+import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
+import 'package:flutter/material.dart';
+
+class BottomNavItem {
+  final IconData icon;
+  final String label;
+
+  const BottomNavItem({required this.icon, required this.label});
+}
+
+class AppBottomNav extends StatelessWidget {
+  final List<BottomNavItem> items;
+  final int currentIndex;
+  final ValueChanged<int> onTap;
+
+  const AppBottomNav({
+    super.key,
+    required this.items,
+    required this.currentIndex,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: AppColors.surface,
+        border: Border(top: BorderSide(color: AppColors.border)),
+      ),
+      child: SafeArea(
+        top: false,
+        child: Row(
+          children: List.generate(items.length, (index) {
+            final item = items[index];
+            final isSelected = index == currentIndex;
+            final color = isSelected ? AppColors.primary : AppColors.textGrey;
+            return Expanded(
+              child: InkWell(
+                onTap: () => onTap(index),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(item.icon, color: color, size: 24),
+                      const SizedBox(height: 2),
+                      Text(
+                        item.label,
+                        style: AppTextStyles.caption.copyWith(
+                          color: color,
+                          fontSize: 11,
+                          fontWeight: isSelected
+                              ? FontWeight.w700
+                              : FontWeight.w500,
+                        ),
+                      ),
+                      const SizedBox(height: 3),
+                      Container(
+                        width: 28,
+                        height: 2,
+                        color: isSelected
+                            ? AppColors.primary
+                            : Colors.transparent,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }),
+        ),
+      ),
+    );
+  }
+}
