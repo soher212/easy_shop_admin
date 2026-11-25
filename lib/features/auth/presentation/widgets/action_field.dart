@@ -45,29 +45,31 @@ class ActionField extends StatelessWidget {
         InkWell(
           borderRadius: BorderRadius.circular(AppDimensions.radiusField),
           onTap: _isDone && !canReplace ? null : onTap,
-          child: _isDone ? _doneBox() : _emptyBox(),
+          child: _isDone ? _doneBox(context) : _emptyBox(context),
         ),
       ],
     );
   }
 
-  Widget _emptyBox() {
+  Widget _emptyBox(BuildContext context) {
     final content = Container(
       height: 48,
       padding: const EdgeInsets.symmetric(
         horizontal: AppDimensions.spaceMedium,
       ),
       decoration: BoxDecoration(
-        color: AppColors.field,
+        color: context.appColors.field,
         borderRadius: BorderRadius.circular(AppDimensions.radiusField),
       ),
       child: Row(
         children: [
-          Icon(emptyIcon, size: 20, color: AppColors.textGrey),
+          Icon(emptyIcon, size: 20, color: context.appColors.textMuted),
           const SizedBox(width: 10),
           Text(
             emptyText,
-            style: AppTextStyles.body.copyWith(color: AppColors.textGrey),
+            style: AppTextStyles.body.copyWith(
+              color: context.appColors.textMuted,
+            ),
           ),
         ],
       ),
@@ -76,14 +78,14 @@ class ActionField extends StatelessWidget {
     return DashedBorder(child: content);
   }
 
-  Widget _doneBox() {
+  Widget _doneBox(BuildContext context) {
     return Container(
       height: 48,
       padding: const EdgeInsets.symmetric(
         horizontal: AppDimensions.spaceMedium,
       ),
       decoration: BoxDecoration(
-        color: AppColors.primaryLight,
+        color: context.appColors.primarySoft,
         borderRadius: BorderRadius.circular(AppDimensions.radiusField),
         border: Border.all(
           color: softBorder
@@ -109,10 +111,10 @@ class ActionField extends StatelessWidget {
           if (onClear != null)
             GestureDetector(
               onTap: onClear,
-              child: const Icon(
+              child: Icon(
                 Icons.close,
                 size: 20,
-                color: AppColors.textGrey,
+                color: context.appColors.textMuted,
               ),
             ),
         ],

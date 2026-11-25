@@ -26,7 +26,7 @@ class ProductsScreen extends StatelessWidget {
       child: Column(
         children: [
           _Header(onAdd: onAddProduct, onManageCategories: onManageCategories),
-          const Divider(height: 1, color: AppColors.border),
+          Divider(height: 1, color: context.appColors.border),
           Expanded(child: _ProductsList(onOpenProduct: onOpenProduct)),
         ],
       ),
@@ -43,7 +43,7 @@ class _Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.surface,
+      color: context.appColors.surface,
       padding: const EdgeInsets.fromLTRB(
         AppDimensions.screenPadding,
         AppDimensions.spaceMedium,
@@ -74,9 +74,12 @@ class _Header extends StatelessWidget {
           const SizedBox(height: AppDimensions.spaceMedium),
           TextField(
             onChanged: context.read<ProductsCubit>().search,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               hintText: 'Search products...',
-              prefixIcon: Icon(Icons.search, color: AppColors.textGrey),
+              prefixIcon: Icon(
+                Icons.search,
+                color: context.appColors.textMuted,
+              ),
               contentPadding: EdgeInsets.symmetric(vertical: 10),
             ),
           ),
@@ -86,7 +89,7 @@ class _Header extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
               decoration: BoxDecoration(
-                color: AppColors.primaryLight,
+                color: context.appColors.primarySoft,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
                   color: AppColors.primary.withValues(alpha: 0.3),
@@ -95,11 +98,7 @@ class _Header extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Icon(
-                    Icons.sell_outlined,
-                    size: 16,
-                    color: AppColors.primary,
-                  ),
+                  Icon(Icons.sell_outlined, size: 16, color: AppColors.primary),
                   const SizedBox(width: 6),
                   Text(
                     'Manage Categories',

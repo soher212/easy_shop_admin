@@ -9,19 +9,23 @@ class DashedBorder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(painter: _DashedBorderPainter(radius), child: child);
+    return CustomPaint(
+      painter: _DashedBorderPainter(radius, context.appColors.border),
+      child: child,
+    );
   }
 }
 
 class _DashedBorderPainter extends CustomPainter {
   final double radius;
+  final Color borderColor;
 
-  const _DashedBorderPainter(this.radius);
+  const _DashedBorderPainter(this.radius, this.borderColor);
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = AppColors.border
+      ..color = borderColor
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.5;
     final path = Path()
@@ -39,5 +43,5 @@ class _DashedBorderPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _DashedBorderPainter oldDelegate) =>
-      oldDelegate.radius != radius;
+      oldDelegate.radius != radius || oldDelegate.borderColor != borderColor;
 }

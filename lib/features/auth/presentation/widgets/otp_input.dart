@@ -48,7 +48,9 @@ class _OtpInputState extends State<OtpInput> {
                 height: 52,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: hasDigit ? AppColors.primaryLight : AppColors.field,
+                  color: hasDigit
+                      ? context.appColors.primarySoft
+                      : context.appColors.field,
                   borderRadius: BorderRadius.circular(14),
                   border: Border.all(
                     color: hasDigit ? AppColors.primary : Colors.transparent,

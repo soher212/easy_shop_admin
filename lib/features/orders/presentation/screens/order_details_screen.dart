@@ -39,10 +39,10 @@ class OrderDetailsScreen extends StatelessWidget {
                         Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Icon(
+                            Icon(
                               Icons.calendar_today_outlined,
                               size: 14,
-                              color: AppColors.textGrey,
+                              color: context.appColors.textMuted,
                             ),
                             const SizedBox(width: 6),
                             Text(
@@ -118,7 +118,7 @@ class _Card extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(AppDimensions.spaceMedium),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.appColors.surface,
         borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
       ),
       child: Column(
@@ -194,10 +194,10 @@ class _DeliveryInfo extends StatelessWidget {
       children: [
         Row(
           children: [
-            const Icon(
+            Icon(
               Icons.location_on_outlined,
               size: 20,
-              color: AppColors.textGrey,
+              color: context.appColors.textMuted,
             ),
             const SizedBox(width: 8),
             Expanded(
@@ -219,7 +219,7 @@ class _DeliveryInfo extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(
+                Icon(
                   Icons.location_on_outlined,
                   size: 16,
                   color: AppColors.primary,
@@ -253,7 +253,7 @@ class _IconLine extends StatelessWidget {
       padding: const EdgeInsets.only(top: 8),
       child: Row(
         children: [
-          Icon(icon, size: 18, color: AppColors.textGrey),
+          Icon(icon, size: 18, color: context.appColors.textMuted),
           const SizedBox(width: 8),
           Text(text, style: AppTextStyles.caption.copyWith(fontSize: 13)),
         ],

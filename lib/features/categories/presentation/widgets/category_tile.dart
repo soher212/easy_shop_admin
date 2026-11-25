@@ -13,7 +13,7 @@ class CategoryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: AppColors.surface,
+      color: context.appColors.surface,
       borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
       child: InkWell(
         borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
@@ -26,10 +26,10 @@ class CategoryTile extends StatelessWidget {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: AppColors.primaryLight,
+                  color: context.appColors.primarySoft,
                   borderRadius: BorderRadius.circular(14),
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.sell_outlined,
                   color: AppColors.primary,
                   size: 22,
@@ -54,10 +54,10 @@ class CategoryTile extends StatelessWidget {
                   ],
                 ),
               ),
-              const Icon(
+              Icon(
                 Icons.edit_outlined,
                 size: 20,
-                color: AppColors.textGrey,
+                color: context.appColors.textMuted,
               ),
             ],
           ),

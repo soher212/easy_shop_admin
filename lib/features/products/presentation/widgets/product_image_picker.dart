@@ -33,11 +33,14 @@ class ProductImagePicker extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
       onTap: () => _pick(context),
-      child: DashedBorder(radius: AppDimensions.radiusCard, child: _content()),
+      child: DashedBorder(
+        radius: AppDimensions.radiusCard,
+        child: _content(context),
+      ),
     );
   }
 
-  Widget _content() {
+  Widget _content(BuildContext context) {
     final radius = BorderRadius.circular(AppDimensions.radiusCard);
     if (image != null) {
       return Container(
@@ -63,14 +66,17 @@ class ProductImagePicker extends StatelessWidget {
     return Container(
       height: _height,
       width: double.infinity,
-      decoration: BoxDecoration(color: AppColors.field, borderRadius: radius),
+      decoration: BoxDecoration(
+        color: context.appColors.field,
+        borderRadius: radius,
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(
+          Icon(
             Icons.photo_camera_outlined,
             size: 28,
-            color: AppColors.textGrey,
+            color: context.appColors.textMuted,
           ),
           const SizedBox(height: AppDimensions.spaceSmall),
           const Text(

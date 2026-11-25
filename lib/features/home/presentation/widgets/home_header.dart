@@ -3,6 +3,7 @@ import 'package:easy_shop_admin/core/theme/app_colors.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
 import 'package:easy_shop_admin/core/widgets/app_image.dart';
+import 'package:easy_shop_admin/core/widgets/theme_mode_button.dart';
 import 'package:easy_shop_admin/features/profile/domain/entities/profile_entity.dart';
 import 'package:flutter/material.dart';
 
@@ -65,6 +66,8 @@ class HomeHeader extends StatelessWidget {
             color: AppColors.onPrimary,
           ),
         ),
+        const SizedBox(width: 8),
+        const ThemeModeButton(),
       ],
     );
   }

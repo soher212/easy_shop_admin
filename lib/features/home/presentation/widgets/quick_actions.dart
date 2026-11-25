@@ -56,7 +56,7 @@ class _ActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final foreground = isPrimary ? AppColors.onPrimary : AppColors.primary;
     return Material(
-      color: isPrimary ? AppColors.primary : AppColors.primaryLight,
+      color: isPrimary ? AppColors.primary : context.appColors.primarySoft,
       borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
       child: InkWell(
         borderRadius: BorderRadius.circular(AppDimensions.radiusCard),

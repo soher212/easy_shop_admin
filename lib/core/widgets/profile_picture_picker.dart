@@ -33,8 +33,8 @@ class ProfilePicturePicker extends StatelessWidget {
             height: 72,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: AppColors.hiddenLight,
-              border: Border.all(color: AppColors.border, width: 2),
+              color: context.appColors.neutralSoft,
+              border: Border.all(color: context.appColors.border, width: 2),
               image: picture == null
                   ? null
                   : DecorationImage(
@@ -43,9 +43,9 @@ class ProfilePicturePicker extends StatelessWidget {
                     ),
             ),
             child: picture == null
-                ? const Icon(
+                ? Icon(
                     Icons.photo_camera_outlined,
-                    color: AppColors.textGrey,
+                    color: context.appColors.textMuted,
                   )
                 : null,
           ),

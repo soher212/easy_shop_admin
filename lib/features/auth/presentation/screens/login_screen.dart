@@ -7,6 +7,7 @@ import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
 import 'package:easy_shop_admin/core/widgets/app_button.dart';
 import 'package:easy_shop_admin/core/widgets/app_snack_bar.dart';
 import 'package:easy_shop_admin/core/widgets/app_text_field.dart';
+import 'package:easy_shop_admin/core/widgets/theme_mode_button.dart';
 import 'package:easy_shop_admin/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -75,7 +76,11 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const SizedBox(height: AppDimensions.spaceLarge),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: ThemeModeButton(),
+                  ),
+                  const SizedBox(height: AppDimensions.spaceSmall),
                   const _Header(),
                   const SizedBox(height: AppDimensions.spaceLarge),
                   AppTextField(
@@ -130,7 +135,7 @@ class _Header extends StatelessWidget {
           height: 80,
           padding: const EdgeInsets.all(AppDimensions.spaceSmall),
           decoration: BoxDecoration(
-            color: AppColors.primaryLight,
+            color: context.appColors.primarySoft,
             borderRadius: BorderRadius.circular(20),
           ),
           child: Image.asset(AppAssets.logo, fit: BoxFit.contain),
@@ -146,7 +151,7 @@ class _Header extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
           decoration: BoxDecoration(
-            color: AppColors.primaryLight,
+            color: context.appColors.primarySoft,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Text(

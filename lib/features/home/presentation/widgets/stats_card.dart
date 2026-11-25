@@ -14,11 +14,11 @@ class StatsCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(AppDimensions.spaceSmall + 4),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.appColors.surface,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.08),
+            color: context.appColors.shadow,
             blurRadius: 16,
             offset: const Offset(0, 6),
           ),
@@ -33,7 +33,7 @@ class StatsCard extends StatelessWidget {
                 label: 'Total Products',
                 icon: Icons.inventory_2_outlined,
                 color: AppColors.primary,
-                background: AppColors.primaryLight,
+                background: context.appColors.primarySoft,
               ),
               const SizedBox(width: AppDimensions.spaceSmall + 4),
               _StatTile(
@@ -41,7 +41,7 @@ class StatsCard extends StatelessWidget {
                 label: 'Total Orders',
                 icon: Icons.shopping_bag_outlined,
                 color: AppColors.info,
-                background: AppColors.infoLight,
+                background: context.appColors.infoSoft,
               ),
             ],
           ),
@@ -53,7 +53,7 @@ class StatsCard extends StatelessWidget {
                 label: 'Pending Orders',
                 icon: Icons.schedule,
                 color: AppColors.warning,
-                background: AppColors.warningLight,
+                background: context.appColors.warningSoft,
               ),
               const SizedBox(width: AppDimensions.spaceSmall + 4),
               _StatTile(
@@ -61,7 +61,7 @@ class StatsCard extends StatelessWidget {
                 label: 'Categories',
                 icon: Icons.sell_outlined,
                 color: AppColors.success,
-                background: AppColors.successLight,
+                background: context.appColors.successSoft,
               ),
             ],
           ),

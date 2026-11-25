@@ -15,7 +15,7 @@ class OrderTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: AppColors.surface,
+      color: context.appColors.surface,
       borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
       child: InkWell(
         borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
@@ -28,7 +28,7 @@ class OrderTile extends StatelessWidget {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: AppColors.primaryLight,
+                  color: context.appColors.primarySoft,
                   borderRadius: BorderRadius.circular(14),
                 ),
                 child: const Icon(

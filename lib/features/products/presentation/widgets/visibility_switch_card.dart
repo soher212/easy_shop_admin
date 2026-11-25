@@ -21,7 +21,7 @@ class VisibilitySwitchCard extends StatelessWidget {
         vertical: AppDimensions.spaceSmall + 2,
       ),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.appColors.surface,
         borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
       ),
       child: Row(

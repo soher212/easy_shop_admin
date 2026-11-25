@@ -105,7 +105,7 @@ class _StatsCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: AppDimensions.spaceMedium),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.appColors.surface,
         borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
       ),
       child: IntrinsicHeight(
@@ -118,24 +118,24 @@ class _StatsCard extends StatelessWidget {
                 style: AppTextStyles.title.copyWith(color: AppColors.primary),
               ),
             ),
-            const VerticalDivider(width: 1, color: AppColors.border),
+            VerticalDivider(width: 1, color: context.appColors.border),
             _Stat(
               label: 'In Stock',
               child: Text('${product.quantity}', style: AppTextStyles.title),
             ),
-            const VerticalDivider(width: 1, color: AppColors.border),
+            VerticalDivider(width: 1, color: context.appColors.border),
             _Stat(
               label: 'Visibility',
               child: product.isVisible
-                  ? const StatusBadge(
+                  ? StatusBadge(
                       label: 'Visible',
                       color: AppColors.success,
-                      background: AppColors.successLight,
+                      background: context.appColors.successSoft,
                     )
-                  : const StatusBadge(
+                  : StatusBadge(
                       label: 'Hidden',
-                      color: AppColors.textGrey,
-                      background: AppColors.hiddenLight,
+                      color: context.appColors.textMuted,
+                      background: context.appColors.neutralSoft,
                     ),
             ),
           ],
@@ -177,7 +177,7 @@ class _InfoCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(AppDimensions.spaceMedium),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.appColors.surface,
         borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
       ),
       child: Column(

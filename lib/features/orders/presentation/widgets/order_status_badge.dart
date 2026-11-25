@@ -11,25 +11,25 @@ class OrderStatusBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return switch (status) {
-      OrderStatus.pending => const StatusBadge(
+      OrderStatus.pending => StatusBadge(
         label: 'Pending',
         color: AppColors.warning,
-        background: AppColors.warningLight,
+        background: context.appColors.warningSoft,
       ),
-      OrderStatus.processing => const StatusBadge(
+      OrderStatus.processing => StatusBadge(
         label: 'Processing',
         color: AppColors.info,
-        background: AppColors.infoLight,
+        background: context.appColors.infoSoft,
       ),
-      OrderStatus.completed => const StatusBadge(
+      OrderStatus.completed => StatusBadge(
         label: 'Completed',
         color: AppColors.success,
-        background: AppColors.successLight,
+        background: context.appColors.successSoft,
       ),
-      OrderStatus.cancelled => const StatusBadge(
+      OrderStatus.cancelled => StatusBadge(
         label: 'Cancelled',
         color: AppColors.error,
-        background: AppColors.hiddenLight,
+        background: context.appColors.neutralSoft,
       ),
     };
   }

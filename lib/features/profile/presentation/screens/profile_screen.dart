@@ -1,6 +1,7 @@
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
+import 'package:easy_shop_admin/core/theme/theme_cubit.dart';
 import 'package:easy_shop_admin/core/widgets/app_button.dart';
 import 'package:easy_shop_admin/core/widgets/app_image.dart';
 import 'package:easy_shop_admin/core/widgets/error_view.dart';
@@ -116,6 +117,31 @@ class _Content extends StatelessWidget {
                     ],
                   ),
                 ),
+                gap,
+                InfoCard(
+                  title: 'APP APPEARANCE',
+                  child: BlocBuilder<ThemeCubit, ThemeMode>(
+                    builder: (context, mode) => SwitchListTile(
+                      contentPadding: EdgeInsets.zero,
+                      secondary: Icon(
+                        mode == ThemeMode.dark
+                            ? Icons.dark_mode_outlined
+                            : Icons.light_mode_outlined,
+                        color: AppColors.primary,
+                      ),
+                      title: Text('Dark Mode', style: AppTextStyles.body),
+                      subtitle: Text(
+                        'Use a darker color scheme',
+                        style: AppTextStyles.caption.copyWith(
+                          color: context.appColors.textMuted,
+                        ),
+                      ),
+                      value: mode == ThemeMode.dark,
+                      onChanged: (enabled) =>
+                          context.read<ThemeCubit>().setDarkMode(enabled),
+                    ),
+                  ),
+                ),
                 const SizedBox(height: AppDimensions.spaceLarge),
                 AppButton(
                   label: 'Edit Profile',
@@ -221,7 +247,7 @@ class _DocumentRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = isUploaded ? AppColors.success : AppColors.textGrey;
+    final color = isUploaded ? AppColors.success : context.appColors.textMuted;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
       child: Row(

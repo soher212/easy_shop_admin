@@ -19,7 +19,7 @@ class OrderListItem extends StatelessWidget {
         ? '1 item'
         : '${order.items.length} items';
     return Material(
-      color: AppColors.surface,
+      color: context.appColors.surface,
       borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
       child: InkWell(
         borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
@@ -61,10 +61,10 @@ class OrderListItem extends StatelessWidget {
                       color: AppColors.primary,
                     ),
                   ),
-                  const Icon(
+                  Icon(
                     Icons.chevron_right,
                     size: 20,
-                    color: AppColors.textGrey,
+                    color: context.appColors.textMuted,
                   ),
                 ],
               ),
@@ -87,7 +87,7 @@ class _Meta extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(icon, size: 14, color: AppColors.textGrey),
+        Icon(icon, size: 14, color: context.appColors.textMuted),
         const SizedBox(width: 4),
         Text(text, style: AppTextStyles.caption),
       ],

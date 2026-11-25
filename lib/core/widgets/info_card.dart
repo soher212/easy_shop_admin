@@ -15,7 +15,7 @@ class InfoCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(AppDimensions.spaceMedium),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.appColors.surface,
         borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
       ),
       child: Column(
@@ -55,7 +55,7 @@ class InfoRow extends StatelessWidget {
       child: Row(
         children: [
           if (icon != null) ...[
-            Icon(icon, size: 18, color: AppColors.textGrey),
+            Icon(icon, size: 18, color: context.appColors.textMuted),
             const SizedBox(width: 8),
           ],
           Text(label, style: AppTextStyles.caption.copyWith(fontSize: 13)),

@@ -144,7 +144,7 @@ class _MailIcon extends StatelessWidget {
       width: 64,
       height: 64,
       decoration: BoxDecoration(
-        color: AppColors.primaryLight,
+        color: context.appColors.primarySoft,
         borderRadius: BorderRadius.circular(18),
       ),
       child: const Icon(Icons.mail_outline, color: AppColors.primary, size: 30),
@@ -163,7 +163,7 @@ class _ExpiryRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Icon(Icons.schedule, size: 16, color: AppColors.textGrey),
+        Icon(Icons.schedule, size: 16, color: context.appColors.textMuted),
         const SizedBox(width: 6),
         Text(
           isExpired ? 'Code expired' : 'Code expires in ',

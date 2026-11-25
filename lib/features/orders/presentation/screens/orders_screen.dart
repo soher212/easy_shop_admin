@@ -20,11 +20,11 @@ class OrdersScreen extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            color: AppColors.surface,
+            color: context.appColors.surface,
             padding: const EdgeInsets.all(AppDimensions.screenPadding),
             child: const Text('Orders', style: AppTextStyles.title),
           ),
-          const Divider(height: 1, color: AppColors.border),
+          Divider(height: 1, color: context.appColors.border),
           Expanded(
             child: BlocBuilder<OrdersCubit, OrdersState>(
               builder: (context, state) => switch (state) {

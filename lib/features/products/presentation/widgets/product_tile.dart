@@ -16,7 +16,7 @@ class ProductTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: AppColors.surface,
+      color: context.appColors.surface,
       borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
       child: InkWell(
         borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
@@ -49,15 +49,15 @@ class ProductTile extends StatelessWidget {
                 ),
               ),
               product.isVisible
-                  ? const StatusBadge(
+                  ? StatusBadge(
                       label: 'Visible',
                       color: AppColors.success,
-                      background: AppColors.successLight,
+                      background: context.appColors.successSoft,
                     )
-                  : const StatusBadge(
+                  : StatusBadge(
                       label: 'Hidden',
-                      color: AppColors.textGrey,
-                      background: AppColors.hiddenLight,
+                      color: context.appColors.textMuted,
+                      background: context.appColors.neutralSoft,
                     ),
             ],
           ),

@@ -36,7 +36,7 @@ class OrderLocationScreen extends StatelessWidget {
                       point: point,
                       width: 48,
                       height: 48,
-                      child: const Icon(
+                      child: Icon(
                         Icons.location_on,
                         color: AppColors.primary,
                         size: 44,
@@ -52,13 +52,13 @@ class OrderLocationScreen extends StatelessWidget {
               top: false,
               child: Container(
                 width: double.infinity,
-                color: AppColors.surface,
+                color: context.appColors.surface,
                 padding: const EdgeInsets.all(16),
                 child: Row(
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.location_on_outlined,
-                      color: AppColors.textGrey,
+                      color: context.appColors.textMuted,
                     ),
                     const SizedBox(width: 8),
                     Expanded(child: Text(address)),
