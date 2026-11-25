@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:easy_shop_admin/core/routes/routes.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
@@ -76,7 +77,7 @@ class _OtpScreenState extends State<OtpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Verify Email')),
+      appBar: AppBar(title: Text(context.l10n.verifyEmail)),
       body: SafeArea(
         child: BlocConsumer<AuthCubit, AuthState>(
           listener: _onState,
@@ -90,10 +91,10 @@ class _OtpScreenState extends State<OtpScreen> {
                   const SizedBox(height: AppDimensions.spaceLarge),
                   const _MailIcon(),
                   const SizedBox(height: AppDimensions.spaceMedium),
-                  const Text('Check your email', style: AppTextStyles.title),
+                  Text(context.l10n.checkYourEmail, style: AppTextStyles.title),
                   const SizedBox(height: AppDimensions.spaceSmall),
                   Text(
-                    'We sent a 6-digit verification code to\n${widget.email}',
+                    context.l10n.verificationCodeSent(widget.email),
                     textAlign: TextAlign.center,
                     style: AppTextStyles.caption,
                   ),
@@ -103,7 +104,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   _ExpiryRow(timeText: _timeText, isExpired: _secondsLeft == 0),
                   const SizedBox(height: AppDimensions.spaceLarge),
                   AppButton(
-                    label: 'Verify',
+                    label: context.l10n.verify,
                     isLoading: isLoading,
                     onPressed: isComplete && _secondsLeft > 0
                         ? () => context.read<AuthCubit>().verifyOtp(
@@ -120,7 +121,7 @@ class _OtpScreenState extends State<OtpScreen> {
                             email: widget.email,
                           ),
                     icon: const Icon(Icons.refresh, size: 18),
-                    label: const Text('Resend Code'),
+                    label: Text(context.l10n.resendCode),
                     style: TextButton.styleFrom(
                       foregroundColor: AppColors.primary,
                     ),
@@ -166,7 +167,7 @@ class _ExpiryRow extends StatelessWidget {
         const Icon(Icons.schedule, size: 16, color: AppColors.textGrey),
         const SizedBox(width: 6),
         Text(
-          isExpired ? 'Code expired' : 'Code expires in ',
+          isExpired ? context.l10n.codeExpired : context.l10n.codeExpiresIn,
           style: AppTextStyles.caption,
         ),
         if (!isExpired)

@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/di/dependency_injection.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/routes/routes.dart';
 import 'package:easy_shop_admin/core/widgets/app_bottom_nav.dart';
 import 'package:easy_shop_admin/features/home/presentation/cubit/home_cubit.dart';
@@ -27,13 +28,6 @@ class _HomeShellState extends State<HomeShell> {
   static const _homeIndex = 0;
   static const _productsIndex = 1;
   static const _ordersIndex = 2;
-
-  static const _items = [
-    BottomNavItem(icon: Icons.home_outlined, label: 'Home'),
-    BottomNavItem(icon: Icons.inventory_2_outlined, label: 'Products'),
-    BottomNavItem(icon: Icons.shopping_bag_outlined, label: 'Orders'),
-    BottomNavItem(icon: Icons.person_outline, label: 'Profile'),
-  ];
 
   int _index = _homeIndex;
   ProfileEntity? _editingProfile;
@@ -78,6 +72,18 @@ class _HomeShellState extends State<HomeShell> {
 
   @override
   Widget build(BuildContext context) {
+    final items = [
+      BottomNavItem(icon: Icons.home_outlined, label: context.l10n.home),
+      BottomNavItem(
+        icon: Icons.inventory_2_outlined,
+        label: context.l10n.products,
+      ),
+      BottomNavItem(
+        icon: Icons.shopping_bag_outlined,
+        label: context.l10n.orders,
+      ),
+      BottomNavItem(icon: Icons.person_outline, label: context.l10n.profile),
+    ];
     final editing = _editingProfile;
     return PopScope(
       canPop: editing == null,
@@ -119,7 +125,7 @@ class _HomeShellState extends State<HomeShell> {
           ],
         ),
         bottomNavigationBar: AppBottomNav(
-          items: _items,
+          items: items,
           currentIndex: _index,
           onTap: _select,
         ),

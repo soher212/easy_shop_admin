@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
 import 'package:easy_shop_admin/core/widgets/error_view.dart';
@@ -55,7 +56,7 @@ class _Header extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('Products', style: AppTextStyles.title),
+              Text(context.l10n.products, style: AppTextStyles.title),
               Material(
                 color: AppColors.primary,
                 shape: const CircleBorder(),
@@ -74,8 +75,8 @@ class _Header extends StatelessWidget {
           const SizedBox(height: AppDimensions.spaceMedium),
           TextField(
             onChanged: context.read<ProductsCubit>().search,
-            decoration: const InputDecoration(
-              hintText: 'Search products...',
+            decoration: InputDecoration(
+              hintText: context.l10n.searchProducts,
               prefixIcon: Icon(Icons.search, color: AppColors.textGrey),
               contentPadding: EdgeInsets.symmetric(vertical: 10),
             ),
@@ -102,7 +103,7 @@ class _Header extends StatelessWidget {
                   ),
                   const SizedBox(width: 6),
                   Text(
-                    'Manage Categories',
+                    context.l10n.manageCategories,
                     style: AppTextStyles.caption.copyWith(
                       color: AppColors.primary,
                       fontWeight: FontWeight.w600,
@@ -143,8 +144,8 @@ class _ProductsList extends StatelessWidget {
       return Center(
         child: Text(
           state.products.isEmpty
-              ? 'No products yet'
-              : 'No products match your search',
+              ? context.l10n.noProductsYet
+              : context.l10n.noProductsMatchSearch,
           style: AppTextStyles.caption,
         ),
       );

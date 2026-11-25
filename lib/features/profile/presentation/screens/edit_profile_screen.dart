@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:easy_shop_admin/core/helpers/validators.dart';
 import 'package:easy_shop_admin/core/services/reverse_geocoder.dart';
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
 import 'package:easy_shop_admin/core/widgets/app_button.dart';
@@ -73,6 +74,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     final label = await ReverseGeocoder.labelFor(
       widget.profile.latitude!,
       widget.profile.longitude!,
+      languageCode: Localizations.localeOf(context).languageCode,
     );
     if (mounted && _locationLabel == null) {
       setState(() => _locationLabel = label);
@@ -162,7 +164,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     } else if (state.status == ProfileFormStatus.failure) {
       showAppSnackBar(
         context,
-        state.message ?? 'Could not save your profile',
+        state.message ?? context.l10n.couldNotSaveProfile,
         isError: true,
       );
     }
@@ -172,7 +174,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit Profile'),
+        title: Text(context.l10n.editProfile),
         leading: BackButton(onPressed: () => widget.onClose(false)),
       ),
       body: BlocConsumer<ProfileFormCubit, ProfileFormState>(
@@ -191,64 +193,69 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ),
                 const SizedBox(height: AppDimensions.spaceMedium),
                 AppTextField(
-                  label: 'Full Name',
-                  hint: 'Ahmed Khalil',
+                  label: context.l10n.fullName,
+                  hint: context.l10n.fullName,
                   controller: _nameController,
-                  validator: Validators.fullName,
+                  validator: (value) =>
+                      Validators.fullName(value, context.l10n),
                   textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(height: AppDimensions.spaceMedium),
                 AppTextField(
-                  label: 'Email',
+                  label: context.l10n.email,
                   hint: 'ahmed@business.com',
                   controller: _emailController,
-                  validator: Validators.email,
+                  validator: (value) => Validators.email(value, context.l10n),
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(height: AppDimensions.spaceMedium),
                 AppTextField(
-                  label: 'Phone',
+                  label: context.l10n.phoneNumber,
                   hint: '+20 100 000 0000',
                   controller: _phoneController,
-                  validator: Validators.phone,
+                  validator: (value) => Validators.phone(value, context.l10n),
                   keyboardType: TextInputType.phone,
                   textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(height: AppDimensions.spaceMedium),
                 AppTextField(
-                  label: 'National ID',
-                  hint: '14-digit national ID',
+                  label: context.l10n.nationalId,
+                  hint: context.l10n.nationalId,
                   controller: _nationalIdController,
-                  validator: Validators.nationalId,
+                  validator: (value) =>
+                      Validators.nationalId(value, context.l10n),
                   keyboardType: TextInputType.number,
                   textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(height: AppDimensions.spaceMedium),
                 AppTextField(
-                  label: 'Business Name',
-                  hint: 'My Digital Store',
+                  label: context.l10n.businessName,
+                  hint: context.l10n.businessName,
                   controller: _businessController,
-                  validator: (value) =>
-                      Validators.required(value, 'Business name'),
+                  validator: (value) => Validators.required(
+                    value,
+                    context.l10n.businessName,
+                    context.l10n,
+                  ),
                   textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(height: AppDimensions.spaceMedium),
                 AppTextField(
-                  label: 'Business Address',
-                  hint: 'Optional',
+                  label: context.l10n.businessAddress,
+                  hint: context.l10n.optional,
                   controller: _addressController,
                   isOptional: true,
                   textInputAction: TextInputAction.done,
                 ),
                 const SizedBox(height: AppDimensions.spaceMedium),
                 ActionField(
-                  label: 'Store Location',
+                  label: context.l10n.storeLocation,
                   emptyIcon: Icons.location_on_outlined,
-                  emptyText: 'Tap to set store location',
+                  emptyText: context.l10n.tapToSetLocation,
                   doneText: _latitude == null || _longitude == null
                       ? null
-                      : '${_locationLabel ?? 'Location set'} · Tap to update',
+                      : '${_locationLabel ?? context.l10n.locationSet} · ${context.l10n.locationUpdated}',
                   doneIcon: Icons.location_on_outlined,
                   softBorder: true,
                   canReplace: true,
@@ -256,11 +263,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ),
                 const SizedBox(height: AppDimensions.spaceMedium),
                 ActionField(
-                  label: 'Commercial Register',
+                  label: context.l10n.commercialRegister,
                   emptyIcon: Icons.upload_outlined,
-                  emptyText: 'Upload Commercial Register',
+                  emptyText: context.l10n.uploadCommercialRegister,
                   doneText: _hasCommercialRegister
-                      ? 'Commercial Register uploaded'
+                      ? context.l10n.commercialRegisterUploaded
                       : null,
                   isDashed: true,
                   onTap: _pickCommercialRegister,
@@ -271,10 +278,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ),
                 const SizedBox(height: AppDimensions.spaceMedium),
                 ActionField(
-                  label: 'Tax Card',
+                  label: context.l10n.taxCard,
                   emptyIcon: Icons.upload_outlined,
-                  emptyText: 'Upload Tax Card',
-                  doneText: _hasTaxCard ? 'Tax Card uploaded' : null,
+                  emptyText: context.l10n.uploadTaxCard,
+                  doneText: _hasTaxCard ? context.l10n.taxCardUploaded : null,
                   isDashed: true,
                   onTap: _pickTaxCard,
                   onClear: () => setState(() {
@@ -284,7 +291,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ),
                 const SizedBox(height: AppDimensions.spaceLarge),
                 AppButton(
-                  label: 'Save Changes',
+                  label: context.l10n.saveChanges,
                   isLoading: state.status == ProfileFormStatus.submitting,
                   onPressed: _submit,
                 ),
@@ -340,7 +347,7 @@ class _AvatarEditor extends StatelessWidget {
               ),
               const SizedBox(width: 6),
               Text(
-                'Change Photo',
+                context.l10n.changePhoto,
                 style: AppTextStyles.body.copyWith(
                   color: AppColors.primary,
                   fontWeight: FontWeight.w600,

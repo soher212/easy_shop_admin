@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/helpers/validators.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/routes/routes.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
@@ -73,7 +74,7 @@ class _RegisterSecurityScreenState extends State<RegisterSecurityScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Create Account')),
+      appBar: AppBar(title: Text(context.l10n.createAccount)),
       body: SafeArea(
         child: BlocConsumer<AuthCubit, AuthState>(
           listener: _onState,
@@ -84,11 +85,14 @@ class _RegisterSecurityScreenState extends State<RegisterSecurityScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const StepProgressBar(currentStep: 3, stepName: 'Security'),
+                  StepProgressBar(
+                    currentStep: 3,
+                    stepName: context.l10n.stepSecurity,
+                  ),
                   const SizedBox(height: AppDimensions.spaceMedium),
-                  const Text('Security', style: AppTextStyles.title),
+                  Text(context.l10n.security, style: AppTextStyles.title),
                   const SizedBox(height: AppDimensions.spaceMedium),
-                  const FieldLabel('Profile Picture', isOptional: true),
+                  FieldLabel(context.l10n.profilePicture, isOptional: true),
                   const SizedBox(height: AppDimensions.spaceSmall),
                   ProfilePicturePicker(
                     picture: _picture,
@@ -96,27 +100,29 @@ class _RegisterSecurityScreenState extends State<RegisterSecurityScreen> {
                   ),
                   const SizedBox(height: AppDimensions.spaceMedium),
                   AppTextField(
-                    label: 'Password',
-                    hint: 'Create a strong password',
+                    label: context.l10n.password,
+                    hint: context.l10n.strongPasswordHint,
                     controller: _passwordController,
-                    validator: Validators.password,
+                    validator: (value) =>
+                        Validators.password(value, context.l10n),
                     textInputAction: TextInputAction.next,
                     isPassword: true,
                   ),
                   const SizedBox(height: AppDimensions.spaceMedium),
                   AppTextField(
-                    label: 'Confirm Password',
-                    hint: 'Repeat your password',
+                    label: context.l10n.confirmPassword,
+                    hint: context.l10n.repeatPasswordHint,
                     controller: _confirmController,
                     validator: Validators.confirmPassword(
                       () => _passwordController.text,
+                      context.l10n,
                     ),
                     textInputAction: TextInputAction.done,
                     isPassword: true,
                   ),
                   const SizedBox(height: AppDimensions.spaceLarge),
                   AppButton(
-                    label: 'Create Account',
+                    label: context.l10n.createAccount,
                     isLoading: state is AuthLoading,
                     onPressed: _canSubmit ? _submit : null,
                   ),

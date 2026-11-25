@@ -1,4 +1,6 @@
 import 'package:easy_shop_admin/core/constants/app_assets.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
+import 'package:easy_shop_admin/core/localization/language_switcher.dart';
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
@@ -13,34 +15,47 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primary,
-      body: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: onTap,
-        child: SizedBox.expand(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const _LogoTile(),
-              const SizedBox(height: AppDimensions.spaceLarge),
-              Text(
-                'Easy Shop',
-                style: AppTextStyles.title.copyWith(
-                  color: AppColors.onPrimary,
-                  fontSize: 32,
-                ),
+      body: Stack(
+        children: [
+          GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: onTap,
+            child: SizedBox.expand(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const _LogoTile(),
+                  const SizedBox(height: AppDimensions.spaceLarge),
+                  Text(
+                    'Easy Shop',
+                    style: AppTextStyles.title.copyWith(
+                      color: AppColors.onPrimary,
+                      fontSize: 32,
+                    ),
+                  ),
+                  const SizedBox(height: AppDimensions.spaceSmall / 2),
+                  Text(
+                    context.l10n.merchantPortal,
+                    style: AppTextStyles.body.copyWith(
+                      color: AppColors.onPrimary.withValues(alpha: 0.8),
+                    ),
+                  ),
+                  const SizedBox(height: 56),
+                  const _LoadingDots(),
+                ],
               ),
-              const SizedBox(height: AppDimensions.spaceSmall / 2),
-              Text(
-                'Merchant Portal',
-                style: AppTextStyles.body.copyWith(
-                  color: AppColors.onPrimary.withValues(alpha: 0.8),
-                ),
-              ),
-              const SizedBox(height: 56),
-              const _LoadingDots(),
-            ],
+            ),
           ),
-        ),
+          const SafeArea(
+            child: Align(
+              alignment: AlignmentDirectional.topEnd,
+              child: Padding(
+                padding: EdgeInsets.all(12),
+                child: LanguageSwitcher(),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class SectionHeader extends StatelessWidget {
           GestureDetector(
             onTap: onSeeAll,
             child: Text(
-              'See all',
+              context.l10n.seeAll,
               style: AppTextStyles.caption.copyWith(
                 color: AppColors.primary,
                 fontWeight: FontWeight.w600,

@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/helpers/format.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
@@ -16,8 +17,8 @@ class OrderListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final itemsText = order.items.length == 1
-        ? '1 item'
-        : '${order.items.length} items';
+        ? context.l10n.oneItem
+        : context.l10n.itemCount('${order.items.length}');
     return Material(
       color: AppColors.surface,
       borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
@@ -45,7 +46,10 @@ class OrderListItem extends StatelessWidget {
                   if (order.createdAt != null)
                     _Meta(
                       Icons.calendar_today_outlined,
-                      formatDateTime(order.createdAt!),
+                      formatDateTime(
+                        order.createdAt!,
+                        locale: Localizations.localeOf(context).languageCode,
+                      ),
                     ),
                   _Meta(Icons.shopping_bag_outlined, itemsText),
                   PaymentMethodLabel(order.paymentMethod, small: true),

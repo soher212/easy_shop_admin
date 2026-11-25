@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
 import 'package:easy_shop_admin/features/orders/domain/entities/order_entity.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class PaymentMethodLabel extends StatelessWidget {
         ),
         SizedBox(width: small ? 4 : 8),
         Text(
-          isCard ? 'Card' : 'Cash',
+          isCard ? context.l10n.card : context.l10n.cash,
           style: small
               ? AppTextStyles.caption
               : AppTextStyles.body.copyWith(fontWeight: FontWeight.w600),

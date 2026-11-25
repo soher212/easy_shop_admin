@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/helpers/location_helper.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/widgets/app_snack_bar.dart';
 import 'package:easy_shop_admin/core/widgets/open_settings_dialog.dart';
 import 'package:flutter/material.dart';
@@ -13,12 +14,18 @@ Future<Position?> pickCurrentLocation(BuildContext context) async {
     if (failure == LocationFailure.deniedForever) {
       await showOpenSettingsDialog(
         context,
-        title: 'Location is blocked',
-        message: failure.message,
+        title: context.l10n.locationBlocked,
+        message: context.l10n.locationPermissionBlocked,
         openSettings: Geolocator.openAppSettings,
       );
     } else {
-      showAppSnackBar(context, failure.message, isError: true);
+      final message = switch (failure) {
+        LocationFailure.serviceDisabled => context.l10n.locationServicesOff,
+        LocationFailure.denied => context.l10n.locationPermissionNeeded,
+        LocationFailure.deniedForever => context.l10n.locationPermissionBlocked,
+        LocationFailure.unavailable => context.l10n.locationRequestFailed,
+      };
+      showAppSnackBar(context, message, isError: true);
     }
     return null;
   }

@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/helpers/image_picker_helper.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/widgets/app_snack_bar.dart';
 import 'package:easy_shop_admin/core/widgets/open_settings_dialog.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,11 @@ Future<XFile?> pickGalleryImage(BuildContext context) async {
     return await ImagePickerHelper.pickImage(ImageSource.gallery);
   } on PickImageFailure catch (failure) {
     if (context.mounted) {
-      showAppSnackBar(context, failure.message, isError: true);
+      showAppSnackBar(
+        context,
+        _failureMessage(context, failure),
+        isError: true,
+      );
     }
     return null;
   }
@@ -27,12 +32,12 @@ Future<XFile?> pickImageFromSheet(BuildContext context) async {
         children: [
           ListTile(
             leading: const Icon(Icons.photo_camera_outlined),
-            title: const Text('Take a photo'),
+            title: Text(context.l10n.takePhoto),
             onTap: () => Navigator.pop(context, ImageSource.camera),
           ),
           ListTile(
             leading: const Icon(Icons.photo_library_outlined),
-            title: const Text('Choose from gallery'),
+            title: Text(context.l10n.chooseFromGallery),
             onTap: () => Navigator.pop(context, ImageSource.gallery),
           ),
         ],
@@ -48,13 +53,27 @@ Future<XFile?> pickImageFromSheet(BuildContext context) async {
     if (failure.canOpenSettings) {
       await showOpenSettingsDialog(
         context,
-        title: 'Permission needed',
-        message: failure.message,
+        title: context.l10n.permissionNeeded,
+        message: _failureMessage(context, failure),
         openSettings: Geolocator.openAppSettings,
       );
     } else {
-      showAppSnackBar(context, failure.message, isError: true);
+      showAppSnackBar(
+        context,
+        _failureMessage(context, failure),
+        isError: true,
+      );
     }
     return null;
   }
+}
+
+String _failureMessage(BuildContext context, PickImageFailure failure) {
+  return switch (failure) {
+    PickImageFailure.cameraDenied => context.l10n.cameraPermissionBlocked,
+    PickImageFailure.photosDenied => context.l10n.photosPermissionBlocked,
+    PickImageFailure.restricted => context.l10n.cameraRestricted,
+    PickImageFailure.noCamera => context.l10n.noCameraAvailable,
+    PickImageFailure.failed => context.l10n.imagePickFailed,
+  };
 }

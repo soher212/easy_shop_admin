@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/helpers/format.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
@@ -55,7 +56,7 @@ class ProductListItem extends StatelessWidget {
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          'Qty ${product.quantity}',
+                          context.l10n.qtyValue('${product.quantity}'),
                           style: AppTextStyles.caption.copyWith(fontSize: 14),
                         ),
                       ],
@@ -67,13 +68,13 @@ class ProductListItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   product.isVisible
-                      ? const StatusBadge(
-                          label: 'Visible',
+                      ? StatusBadge(
+                          label: context.l10n.visible,
                           color: AppColors.success,
                           background: AppColors.successLight,
                         )
-                      : const StatusBadge(
-                          label: 'Hidden',
+                      : StatusBadge(
+                          label: context.l10n.hidden,
                           color: AppColors.textGrey,
                           background: AppColors.hiddenLight,
                         ),

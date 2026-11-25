@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/routes/routes.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
 import 'package:easy_shop_admin/core/widgets/app_button.dart';
@@ -90,13 +91,13 @@ class _RegisterBusinessScreenState extends State<RegisterBusinessScreen> {
 
   String? get _locationText {
     if (_latitude == null || _longitude == null) return null;
-    return '${_locationLabel ?? 'Location'} — location set';
+    return '${_locationLabel ?? context.l10n.storeLocation} — ${context.l10n.locationSet}';
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Create Account')),
+      appBar: AppBar(title: Text(context.l10n.createAccount)),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(AppDimensions.screenPadding),
@@ -105,32 +106,38 @@ class _RegisterBusinessScreenState extends State<RegisterBusinessScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const StepProgressBar(currentStep: 2, stepName: 'Business'),
+                StepProgressBar(
+                  currentStep: 2,
+                  stepName: context.l10n.stepBusiness,
+                ),
                 const SizedBox(height: AppDimensions.spaceMedium),
-                const Text('Business Information', style: AppTextStyles.title),
+                Text(
+                  context.l10n.businessInformation,
+                  style: AppTextStyles.title,
+                ),
                 const SizedBox(height: AppDimensions.spaceMedium),
                 AppTextField(
-                  label: 'Business Name',
-                  hint: 'My Digital Store',
+                  label: context.l10n.businessName,
+                  hint: context.l10n.businessName,
                   controller: _nameController,
                   validator: (value) => (value?.trim().isEmpty ?? true)
-                      ? 'Business name is required'
+                      ? context.l10n.businessNameRequired
                       : null,
                   textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(height: AppDimensions.spaceMedium),
                 AppTextField(
-                  label: 'Business Address',
-                  hint: 'Optional',
+                  label: context.l10n.businessAddress,
+                  hint: context.l10n.optional,
                   controller: _addressController,
                   isOptional: true,
                   textInputAction: TextInputAction.done,
                 ),
                 const SizedBox(height: AppDimensions.spaceMedium),
                 ActionField(
-                  label: 'Store Location',
+                  label: context.l10n.storeLocation,
                   emptyIcon: Icons.location_on_outlined,
-                  emptyText: 'Tap to set store location',
+                  emptyText: context.l10n.tapToSetLocation,
                   doneText: _locationText,
                   doneIcon: Icons.location_on_outlined,
                   softBorder: true,
@@ -139,29 +146,31 @@ class _RegisterBusinessScreenState extends State<RegisterBusinessScreen> {
                 ),
                 const SizedBox(height: AppDimensions.spaceMedium),
                 ActionField(
-                  label: 'Commercial Register',
+                  label: context.l10n.commercialRegister,
                   emptyIcon: Icons.upload_outlined,
-                  emptyText: 'Upload Commercial Register',
+                  emptyText: context.l10n.uploadCommercialRegister,
                   doneText: _commercialRegister == null
                       ? null
-                      : 'Commercial Register uploaded',
+                      : context.l10n.commercialRegisterUploaded,
                   isDashed: true,
                   onTap: _pickCommercialRegister,
                   onClear: () => setState(() => _commercialRegister = null),
                 ),
                 const SizedBox(height: AppDimensions.spaceMedium),
                 ActionField(
-                  label: 'Tax Card',
+                  label: context.l10n.taxCard,
                   emptyIcon: Icons.upload_outlined,
-                  emptyText: 'Upload Tax Card',
-                  doneText: _taxCard == null ? null : 'Tax Card uploaded',
+                  emptyText: context.l10n.uploadTaxCard,
+                  doneText: _taxCard == null
+                      ? null
+                      : context.l10n.taxCardUploaded,
                   isDashed: true,
                   onTap: _pickTaxCard,
                   onClear: () => setState(() => _taxCard = null),
                 ),
                 const SizedBox(height: AppDimensions.spaceLarge),
                 AppButton(
-                  label: 'Continue',
+                  label: context.l10n.continueLabel,
                   onPressed: _canContinue ? _continue : null,
                 ),
               ],

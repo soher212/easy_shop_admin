@@ -1,5 +1,6 @@
 import 'package:easy_shop_admin/core/helpers/format.dart';
 import 'package:easy_shop_admin/core/helpers/validators.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/widgets/app_button.dart';
@@ -106,20 +107,17 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Delete product?'),
-        content: Text(
-          '"${widget.product!.name}" will be removed from your store. '
-          'This cannot be undone.',
-        ),
+        title: Text(context.l10n.deleteProductQuestion),
+        content: Text(context.l10n.deleteProductMessage(widget.product!.name)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(context.l10n.cancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
             style: TextButton.styleFrom(foregroundColor: AppColors.error),
-            child: const Text('Delete'),
+            child: Text(context.l10n.delete),
           ),
         ],
       ),
@@ -136,7 +134,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
         state.categories.isNotEmpty) {
       showAppSnackBar(
         context,
-        state.message ?? 'Something went wrong',
+        state.message ?? context.l10n.requestFailed,
         isError: true,
       );
     }
@@ -145,7 +143,11 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(_isEditing ? 'Edit Product' : 'Add Product')),
+      appBar: AppBar(
+        title: Text(
+          _isEditing ? context.l10n.editProduct : context.l10n.addProduct,
+        ),
+      ),
       body: SafeArea(
         child: BlocConsumer<ProductFormCubit, ProductFormState>(
           listener: _onState,
@@ -156,19 +158,19 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
             if (state.status == ProductFormStatus.failure &&
                 state.categories.isEmpty) {
               return ErrorView(
-                message: state.message ?? 'Could not load categories',
+                message: state.message ?? context.l10n.requestFailed,
                 onRetry: () =>
                     context.read<ProductFormCubit>().loadCategories(),
               );
             }
-            return _form(state);
+            return _form(context, state);
           },
         ),
       ),
     );
   }
 
-  Widget _form(ProductFormState state) {
+  Widget _form(BuildContext context, ProductFormState state) {
     final isBusy = state.status == ProductFormStatus.submitting;
     return SingleChildScrollView(
       padding: const EdgeInsets.all(AppDimensions.screenPadding),
@@ -184,24 +186,28 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
             ),
             const SizedBox(height: AppDimensions.spaceMedium),
             AppTextField(
-              label: 'Product Name',
+              label: context.l10n.productName,
               hint: 'e.g. Wireless Headphones',
               controller: _nameController,
-              validator: (value) => Validators.required(value, 'Product name'),
+              validator: (value) => Validators.required(
+                value,
+                context.l10n.productName,
+                context.l10n,
+              ),
               textInputAction: TextInputAction.next,
             ),
             const SizedBox(height: AppDimensions.spaceMedium),
-            _categoryField(state),
+            _categoryField(context, state),
             const SizedBox(height: AppDimensions.spaceMedium),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                   child: AppTextField(
-                    label: 'Price',
+                    label: context.l10n.price,
                     hint: '0.00',
                     controller: _priceController,
-                    validator: Validators.price,
+                    validator: (value) => Validators.price(value, context.l10n),
                     keyboardType: const TextInputType.numberWithOptions(
                       decimal: true,
                     ),
@@ -211,10 +217,11 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                 const SizedBox(width: AppDimensions.spaceMedium),
                 Expanded(
                   child: AppTextField(
-                    label: 'Quantity',
+                    label: context.l10n.quantity,
                     hint: '0',
                     controller: _quantityController,
-                    validator: Validators.quantity,
+                    validator: (value) =>
+                        Validators.quantity(value, context.l10n),
                     keyboardType: TextInputType.number,
                     textInputAction: TextInputAction.next,
                   ),
@@ -223,8 +230,8 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
             ),
             const SizedBox(height: AppDimensions.spaceMedium),
             AppTextField(
-              label: 'Description',
-              hint: 'Optional product description...',
+              label: context.l10n.description,
+              hint: context.l10n.optionalProductDescription,
               controller: _descriptionController,
               isOptional: true,
               maxLines: 3,
@@ -237,7 +244,9 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
             ),
             const SizedBox(height: AppDimensions.spaceLarge),
             AppButton(
-              label: _isEditing ? 'Save Changes' : 'Add Product',
+              label: _isEditing
+                  ? context.l10n.saveChanges
+                  : context.l10n.addProduct,
               isLoading: isBusy,
               onPressed: _canSubmit ? _submit : null,
             ),
@@ -246,7 +255,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
               TextButton.icon(
                 onPressed: isBusy ? null : _confirmDelete,
                 icon: const Icon(Icons.delete_outline),
-                label: const Text('Delete Product'),
+                label: Text(context.l10n.deleteProduct),
                 style: TextButton.styleFrom(foregroundColor: AppColors.error),
               ),
             ],
@@ -256,7 +265,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
     );
   }
 
-  Widget _categoryField(ProductFormState state) {
+  Widget _categoryField(BuildContext context, ProductFormState state) {
     // The product's category may have been deleted since it was saved.
     final selected = state.categories.any((c) => c.id == _categoryId)
         ? _categoryId
@@ -264,18 +273,19 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const FieldLabel('Category'),
+        FieldLabel(context.l10n.categories),
         const SizedBox(height: AppDimensions.spaceSmall),
         DropdownButtonFormField<int>(
           initialValue: selected,
           isExpanded: true,
-          hint: const Text('Select category'),
+          hint: Text(context.l10n.selectCategory),
           decoration: const InputDecoration(),
           items: [
             for (final category in state.categories)
               DropdownMenuItem(value: category.id, child: Text(category.name)),
           ],
-          validator: (value) => value == null ? 'Select a category' : null,
+          validator: (value) =>
+              value == null ? context.l10n.selectCategoryError : null,
           onChanged: (value) {
             setState(() => _categoryId = value);
             _updateCanSubmit();

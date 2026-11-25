@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/helpers/format.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/routes/routes.dart';
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
@@ -18,7 +19,7 @@ class OrderDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     const gap = SizedBox(height: AppDimensions.spaceSmall + 4);
     return Scaffold(
-      appBar: AppBar(title: const Text('Order Details')),
+      appBar: AppBar(title: Text(context.l10n.orderDetails)),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(AppDimensions.screenPadding),
@@ -48,7 +49,10 @@ class OrderDetailsScreen extends StatelessWidget {
                             Text(
                               formatDateTime(
                                 order.createdAt!,
-                              ).replaceFirst(' · ', ' at '),
+                                locale: Localizations.localeOf(
+                                  context,
+                                ).languageCode,
+                              ),
                               style: AppTextStyles.caption,
                             ),
                           ],
@@ -61,17 +65,17 @@ class OrderDetailsScreen extends StatelessWidget {
             ),
             gap,
             _Card(
-              title: 'CUSTOMER',
+              title: context.l10n.customer,
               child: _CustomerInfo(order: order),
             ),
             gap,
             _Card(
-              title: 'DELIVERY',
+              title: context.l10n.delivery,
               child: _DeliveryInfo(order: order),
             ),
             gap,
             _Card(
-              title: 'ORDER ITEMS',
+              title: context.l10n.orderItems,
               child: Column(
                 children: [
                   for (final item in order.items) _ItemRow(item: item),
@@ -80,16 +84,16 @@ class OrderDetailsScreen extends StatelessWidget {
             ),
             gap,
             _Card(
-              title: 'PAYMENT',
+              title: context.l10n.payment,
               child: PaymentMethodLabel(order.paymentMethod),
             ),
             gap,
             _Card(
-              title: 'SUMMARY',
+              title: context.l10n.summary,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Total', style: AppTextStyles.caption),
+                  Text(context.l10n.total, style: AppTextStyles.caption),
                   Text(
                     formatPrice(order.total),
                     style: AppTextStyles.title.copyWith(
@@ -202,7 +206,9 @@ class _DeliveryInfo extends StatelessWidget {
             const SizedBox(width: 8),
             Expanded(
               child: Text(
-                order.address.isEmpty ? 'No address provided' : order.address,
+                order.address.isEmpty
+                    ? context.l10n.noAddressProvided
+                    : order.address,
                 style: AppTextStyles.body,
               ),
             ),
@@ -226,7 +232,7 @@ class _DeliveryInfo extends StatelessWidget {
                 ),
                 const SizedBox(width: 4),
                 Text(
-                  'View on Map',
+                  context.l10n.viewOnMap,
                   style: AppTextStyles.caption.copyWith(
                     color: AppColors.primary,
                     fontWeight: FontWeight.w600,

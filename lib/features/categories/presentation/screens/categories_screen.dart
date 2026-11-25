@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/routes/routes.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
@@ -47,7 +48,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Categories'),
+          title: Text(context.l10n.categories),
           actions: [
             Padding(
               padding: const EdgeInsets.only(
@@ -88,8 +89,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   Widget _list(BuildContext context, CategoriesSuccess state) {
     final categories = state.categories;
     if (categories.isEmpty) {
-      return const Center(
-        child: Text('No categories yet', style: AppTextStyles.caption),
+      return Center(
+        child: Text(context.l10n.noCategoriesYet, style: AppTextStyles.caption),
       );
     }
     return RefreshIndicator(

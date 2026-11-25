@@ -1,3 +1,4 @@
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:flutter/material.dart';
 
 // Once a permission is blocked the system won't ask the user again, so we
@@ -16,11 +17,11 @@ Future<void> showOpenSettingsDialog(
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context, false),
-          child: const Text('Not now'),
+          child: Text(context.l10n.notNow),
         ),
         TextButton(
           onPressed: () => Navigator.pop(context, true),
-          child: const Text('Open settings'),
+          child: Text(context.l10n.openSettings),
         ),
       ],
     ),

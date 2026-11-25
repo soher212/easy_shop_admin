@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/helpers/format.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/routes/routes.dart';
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
@@ -27,7 +28,7 @@ class ProductDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Product Details'),
+        title: Text(context.l10n.productDetails),
         actions: [
           IconButton(
             icon: const Icon(Icons.edit_outlined),
@@ -61,7 +62,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     if (product.description.isNotEmpty) ...[
                       const SizedBox(height: AppDimensions.spaceMedium),
                       _InfoCard(
-                        title: 'DESCRIPTION',
+                        title: context.l10n.description,
                         child: Text(
                           product.description,
                           style: AppTextStyles.body,
@@ -70,18 +71,29 @@ class ProductDetailsScreen extends StatelessWidget {
                     ],
                     const SizedBox(height: AppDimensions.spaceMedium),
                     _InfoCard(
-                      title: 'DETAILS',
+                      title: context.l10n.productDetails,
                       child: Column(
                         children: [
-                          _DetailRow('Category', product.categoryName),
+                          _DetailRow(
+                            context.l10n.category,
+                            product.categoryName,
+                          ),
                           if (product.createdAt != null)
-                            _DetailRow('Added', formatDate(product.createdAt!)),
+                            _DetailRow(
+                              context.l10n.added,
+                              formatDate(
+                                product.createdAt!,
+                                locale: Localizations.localeOf(
+                                  context,
+                                ).languageCode,
+                              ),
+                            ),
                         ],
                       ),
                     ),
                     const SizedBox(height: AppDimensions.spaceLarge),
                     AppButton(
-                      label: 'Edit Product',
+                      label: context.l10n.editProduct,
                       onPressed: () => _edit(context),
                     ),
                   ],
@@ -112,7 +124,7 @@ class _StatsCard extends StatelessWidget {
         child: Row(
           children: [
             _Stat(
-              label: 'Price',
+              label: context.l10n.price,
               child: Text(
                 formatPrice(product.price),
                 style: AppTextStyles.title.copyWith(color: AppColors.primary),
@@ -120,20 +132,20 @@ class _StatsCard extends StatelessWidget {
             ),
             const VerticalDivider(width: 1, color: AppColors.border),
             _Stat(
-              label: 'In Stock',
+              label: context.l10n.inStock,
               child: Text('${product.quantity}', style: AppTextStyles.title),
             ),
             const VerticalDivider(width: 1, color: AppColors.border),
             _Stat(
-              label: 'Visibility',
+              label: context.l10n.visibility,
               child: product.isVisible
-                  ? const StatusBadge(
-                      label: 'Visible',
+                  ? StatusBadge(
+                      label: context.l10n.visible,
                       color: AppColors.success,
                       background: AppColors.successLight,
                     )
-                  : const StatusBadge(
-                      label: 'Hidden',
+                  : StatusBadge(
+                      label: context.l10n.hidden,
                       color: AppColors.textGrey,
                       background: AppColors.hiddenLight,
                     ),

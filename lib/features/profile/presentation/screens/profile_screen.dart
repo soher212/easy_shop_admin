@@ -1,4 +1,6 @@
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
+import 'package:easy_shop_admin/core/localization/language_switcher.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
 import 'package:easy_shop_admin/core/widgets/app_button.dart';
@@ -47,6 +49,13 @@ class _Content extends StatelessWidget {
       physics: const AlwaysScrollableScrollPhysics(),
       child: Column(
         children: [
+          const Align(
+            alignment: AlignmentDirectional.centerEnd,
+            child: Padding(
+              padding: EdgeInsetsDirectional.only(end: 16, top: 12),
+              child: LanguageSwitcher(),
+            ),
+          ),
           _Header(profile: profile),
           Padding(
             padding: const EdgeInsets.all(AppDimensions.screenPadding),
@@ -54,27 +63,27 @@ class _Content extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 InfoCard(
-                  title: 'PERSONAL INFORMATION',
+                  title: context.l10n.personalInformation,
                   child: Column(
                     children: [
                       InfoRow(
                         icon: Icons.person_outline,
-                        label: 'Full Name',
+                        label: context.l10n.fullName,
                         value: InfoValue(profile.name),
                       ),
                       InfoRow(
                         icon: Icons.mail_outline,
-                        label: 'Email',
+                        label: context.l10n.email,
                         value: InfoValue(profile.email),
                       ),
                       InfoRow(
                         icon: Icons.phone_outlined,
-                        label: 'Phone',
+                        label: context.l10n.phoneNumber,
                         value: InfoValue(profile.phone),
                       ),
                       InfoRow(
                         icon: Icons.tag,
-                        label: 'National ID',
+                        label: context.l10n.nationalId,
                         value: InfoValue(profile.nationalId),
                       ),
                     ],
@@ -82,19 +91,19 @@ class _Content extends StatelessWidget {
                 ),
                 gap,
                 InfoCard(
-                  title: 'BUSINESS INFORMATION',
+                  title: context.l10n.businessInformation,
                   child: Column(
                     children: [
                       InfoRow(
-                        label: 'Business Name',
+                        label: context.l10n.businessName,
                         value: InfoValue(profile.businessName),
                       ),
                       InfoRow(
-                        label: 'Business Address',
+                        label: context.l10n.businessAddress,
                         value: InfoValue(profile.businessAddress),
                       ),
                       InfoRow(
-                        label: 'Store Location',
+                        label: context.l10n.storeLocation,
                         value: StoreLocationText(
                           latitude: profile.latitude,
                           longitude: profile.longitude,
@@ -105,20 +114,23 @@ class _Content extends StatelessWidget {
                 ),
                 gap,
                 InfoCard(
-                  title: 'BUSINESS DOCUMENTS',
+                  title: context.l10n.businessDocuments,
                   child: Column(
                     children: [
                       _DocumentRow(
-                        'Commercial Register',
+                        context.l10n.commercialRegister,
                         isUploaded: profile.hasCommercialRegister,
                       ),
-                      _DocumentRow('Tax Card', isUploaded: profile.hasTaxCard),
+                      _DocumentRow(
+                        context.l10n.taxCard,
+                        isUploaded: profile.hasTaxCard,
+                      ),
                     ],
                   ),
                 ),
                 const SizedBox(height: AppDimensions.spaceLarge),
                 AppButton(
-                  label: 'Edit Profile',
+                  label: context.l10n.editProfile,
                   onPressed: () => onEdit(profile),
                 ),
               ],
@@ -200,7 +212,7 @@ class _Header extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
-              'MERCHANT',
+              context.l10n.merchantLabel,
               style: AppTextStyles.caption.copyWith(
                 color: AppColors.onPrimary,
                 fontWeight: FontWeight.w700,
@@ -237,7 +249,7 @@ class _DocumentRow extends StatelessWidget {
               ),
               const SizedBox(width: 4),
               Text(
-                isUploaded ? 'Uploaded' : 'Not uploaded',
+                isUploaded ? context.l10n.uploaded : context.l10n.notUploaded,
                 style: AppTextStyles.caption.copyWith(
                   color: color,
                   fontWeight: FontWeight.w600,

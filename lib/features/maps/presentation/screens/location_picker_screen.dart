@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/services/reverse_geocoder.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
@@ -51,6 +52,7 @@ class _LocationPickerScreenState extends State<LocationPickerScreen> {
     final label = await ReverseGeocoder.labelFor(
       point.latitude,
       point.longitude,
+      languageCode: Localizations.localeOf(context).languageCode,
     );
     if (!mounted || requestId != _requestId) return;
     setState(() {
@@ -83,9 +85,9 @@ class _LocationPickerScreenState extends State<LocationPickerScreen> {
     );
   }
 
-  String get _panelText {
-    if (_selected == null) return 'Tap the map to choose the location';
-    if (_isResolving) return 'Finding the place name...';
+  String _panelText(BuildContext context) {
+    if (_selected == null) return context.l10n.tapMapToChoose;
+    if (_isResolving) return context.l10n.findingPlaceName;
     return _label ??
         '${_selected!.latitude.toStringAsFixed(4)}, '
             '${_selected!.longitude.toStringAsFixed(4)}';
@@ -95,7 +97,7 @@ class _LocationPickerScreenState extends State<LocationPickerScreen> {
   Widget build(BuildContext context) {
     final selected = _selected;
     return Scaffold(
-      appBar: AppBar(title: const Text('Select Location')),
+      appBar: AppBar(title: Text(context.l10n.selectLocation)),
       body: Stack(
         children: [
           FlutterMap(
@@ -168,13 +170,16 @@ class _LocationPickerScreenState extends State<LocationPickerScreen> {
                         ),
                         const SizedBox(width: 8),
                         Expanded(
-                          child: Text(_panelText, style: AppTextStyles.body),
+                          child: Text(
+                            _panelText(context),
+                            style: AppTextStyles.body,
+                          ),
                         ),
                       ],
                     ),
                     const SizedBox(height: AppDimensions.spaceMedium),
                     AppButton(
-                      label: 'Confirm Location',
+                      label: context.l10n.confirmLocation,
                       onPressed: selected == null ? null : _confirm,
                     ),
                   ],

@@ -1,0 +1,219 @@
+{
+  "@@locale": "en",
+  "appTitle": "Easy Shop Merchant",
+  "english": "English",
+  "arabic": "العربية",
+  "changeLanguage": "Language",
+  "home": "Home",
+  "products": "Products",
+  "orders": "Orders",
+  "profile": "Profile",
+  "categories": "Categories",
+  "retry": "Retry",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "saveChanges": "Save Changes",
+  "addProduct": "Add Product",
+  "editProduct": "Edit Product",
+  "addCategory": "Add Category",
+  "editCategory": "Edit Category",
+  "createCategory": "Create Category",
+  "createAccount": "Create Account",
+  "continueLabel": "Continue",
+  "signIn": "Sign In",
+  "signOut": "Sign Out",
+  "welcomeBack": "Welcome back",
+  "welcome": "Welcome",
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm Password",
+  "fullName": "Full Name",
+  "phoneNumber": "Phone Number",
+  "nationalId": "National ID",
+  "businessName": "Business Name",
+  "businessAddress": "Business Address",
+  "storeLocation": "Store Location",
+  "commercialRegister": "Commercial Register",
+  "taxCard": "Tax Card",
+  "personalInformation": "Personal Information",
+  "businessInformation": "Business Information",
+  "security": "Security",
+  "description": "Description",
+  "categoryName": "Category Name",
+  "productName": "Product Name",
+  "price": "Price",
+  "quantity": "Quantity",
+  "visible": "Visible",
+  "hidden": "Hidden",
+  "pending": "Pending",
+  "processing": "Processing",
+  "completed": "Completed",
+  "cancelled": "Cancelled",
+  "card": "Card",
+  "cash": "Cash",
+  "noOrdersYet": "No orders yet",
+  "noProductsYet": "No products yet",
+  "noCategoriesYet": "No categories yet",
+  "quickActions": "Quick Actions",
+  "recentOrders": "Recent Orders",
+  "productsOverview": "Products Overview",
+  "totalProducts": "Total Products",
+  "totalOrders": "Total Orders",
+  "pendingOrders": "Pending Orders",
+  "addProductAction": "Add Product",
+  "selectLocation": "Select Location",
+  "confirmLocation": "Confirm Location",
+  "deliveryLocation": "Delivery Location",
+  "orderDetails": "Order Details",
+  "productDetails": "Product Details",
+  "editProfile": "Edit Profile",
+  "save": "Save",
+  "deleteProductQuestion": "Delete product?",
+  "deleteCategoryQuestion": "Delete category?",
+  "takePhoto": "Take a photo",
+  "chooseFromGallery": "Choose from gallery",
+  "permissionNeeded": "Permission needed",
+  "locationBlocked": "Location is blocked",
+  "notNow": "Not now",
+  "openSettings": "Open settings",
+  "pageNotFound": "Page not found",
+  "unknownRouteMessage": "We couldn't find that page.",
+  "verifyEmail": "Verify Email",
+  "checkYourEmail": "Check your email",
+  "verify": "Verify",
+  "resendCode": "Resend Code",
+  "emailRequired": "Email is required",
+  "validEmail": "Enter a valid email",
+  "fullNameRequired": "Full name is required",
+  "enterFullName": "Enter your full name (first and last name)",
+  "phoneRequired": "Phone number is required",
+  "phoneFormat": "Phone must start with +20 followed by 10 digits",
+  "nationalIdRequired": "National ID is required",
+  "nationalIdFormat": "National ID must be 14 digits starting with 2 or 3",
+  "passwordRequired": "Password is required",
+  "passwordLength": "Password must be at least 6 characters",
+  "confirmPasswordRequired": "Please confirm your password",
+  "passwordMismatch": "Passwords do not match",
+  "validPrice": "Enter a valid price",
+  "positivePrice": "Price must be greater than 0",
+  "wholeNumber": "Enter a whole number",
+  "nonNegativeQuantity": "Quantity cannot be negative",
+  "businessDocuments": "Business Documents",
+  "delivery": "Delivery",
+  "customer": "Customer",
+  "orderItems": "Order Items",
+  "payment": "Payment",
+  "summary": "Summary",
+  "total": "Total",
+  "visibility": "Visibility",
+  "inStock": "In Stock",
+  "edit": "Edit",
+  "deleteCategoryWarning": "This category contains {count} product(s). Deleting it will also affect these products.",
+  "@deleteCategoryWarning": { "placeholders": { "count": { "type": "String" } } },
+  "searchProducts": "Search products...",
+  "searchOrders": "Search orders...",
+  "welcomeMerchant": "Welcome to Easy Shop",
+  "createStoreAccount": "Create your store account",
+  "alreadyHaveAccount": "Already have an account?",
+  "newMerchant": "New merchant?",
+  "createOne": "Create one",
+  "forgotPassword": "Forgot password?",
+  "selectCategory": "Select category",
+  "deleteCategory": "Delete Category",
+  "deleteProduct": "Delete Product",
+  "requestFailed": "Something went wrong. Please try again.",
+  "addressUnavailable": "Address unavailable",
+  "stepPersonal": "Personal Information",
+  "stepBusiness": "Business Information",
+  "stepSecurity": "Security",
+  "confirmDelete": "Are you sure you want to delete this item?",
+  "noData": "No data available"
+  ,"optional": "Optional"
+  ,"requiredField": "{field} is required"
+  ,"@requiredField": { "placeholders": { "field": { "type": "String" } } }
+  ,"noProductsMatchSearch": "No products match your search"
+  ,"selectCategoryError": "Select a category"
+  ,"businessNameRequired": "Business name is required"
+  ,"locationSet": "Location set"
+  ,"tapToSetLocation": "Tap to set store location"
+  ,"uploadCommercialRegister": "Upload Commercial Register"
+  ,"commercialRegisterUploaded": "Commercial Register uploaded"
+  ,"uploadTaxCard": "Upload Tax Card"
+  ,"taxCardUploaded": "Tax Card uploaded"
+  ,"deleteProductMessage": "{name} will be removed from your store. This cannot be undone."
+  ,"@deleteProductMessage": { "placeholders": { "name": { "type": "String" } } }
+  ,"categoryDeleteWithProducts": "{name} has {count} product(s). Deleting this category may also affect them. This cannot be undone."
+  ,"@categoryDeleteWithProducts": { "placeholders": { "name": { "type": "String" }, "count": { "type": "String" } } }
+  ,"categoryDeleteEmpty": "{name} will be removed. This cannot be undone."
+  ,"@categoryDeleteEmpty": { "placeholders": { "name": { "type": "String" } } }
+  ,"profilePicture": "Profile Picture"
+  ,"signInDescription": "Sign in to manage your store"
+  ,"forBusiness": "FOR BUSINESS"
+  ,"signInLink": "Sign in"
+  ,"tapToChooseLocation": "Tap to set store location"
+  ,"category": "Category"
+  ,"merchantLabel": "Merchant"
+  ,"goodMorning": "Good morning,"
+  ,"goodAfternoon": "Good afternoon,"
+  ,"goodEvening": "Good evening,"
+  ,"qtyValue": "Qty {quantity}"
+  ,"@qtyValue": { "placeholders": { "quantity": { "type": "String" } } }
+  ,"seeAll": "See all"
+  ,"removeImage": "Remove image"
+  ,"uploadProductImage": "Upload product image"
+  ,"editProductImage": "Edit product image"
+  ,"selectImage": "Select image"
+  ,"location": "Location"
+  ,"locationPermissionMessage": "Allow location access in settings to choose a location."
+  ,"product": "Product"
+  ,"stock": "Stock"
+  ,"orderCode": "Order #{code}"
+  ,"@orderCode": { "placeholders": { "code": { "type": "String" } } }
+  ,"visibleToCustomers": "Visible to customers"
+  ,"showProductInStore": "Show this product in your store"
+  ,"addProductImageOptional": "Add product image (optional)"
+  ,"itemCount": "{count} items"
+  ,"@itemCount": { "placeholders": { "count": { "type": "String" } } }
+  ,"oneItem": "1 item"
+  ,"noAddressProvided": "No address provided"
+  ,"viewOnMap": "View on Map"
+  ,"tapMapToChoose": "Tap the map to choose the location"
+  ,"findingPlaceName": "Finding the place name..."
+  ,"atTime": " at "
+  ,"merchantPortal": "Merchant Portal"
+  ,"profileLoadFailed": "Could not load your profile."
+  ,"imageUploadFailed": "Could not upload image."
+  ,"added": "Added"
+  ,"verificationCodeSent": "We sent a 6-digit verification code to\n{email}"
+  ,"@verificationCodeSent": { "placeholders": { "email": { "type": "String" } } }
+  ,"uploaded": "Uploaded"
+  ,"notUploaded": "Not uploaded"
+  ,"stepProgress": "Step {current} of {total} — {name}"
+  ,"@stepProgress": { "placeholders": { "current": { "type": "String" }, "total": { "type": "String" }, "name": { "type": "String" } } }
+  ,"locationUnavailable": "Location is unavailable."
+  ,"codeExpired": "Code expired"
+  ,"codeExpiresIn": "Code expires in "
+  ,"manageCategories": "Manage Categories"
+  ,"briefDescription": "Brief description..."
+  ,"enterPassword": "Enter your password"
+  ,"strongPasswordHint": "Create a strong password"
+  ,"repeatPasswordHint": "Repeat your password"
+  ,"optionalProductDescription": "Optional product description..."
+  ,"locationUpdated": "Tap to update"
+  ,"uploadPhoto": "Upload photo"
+  ,"changePhoto": "Change photo"
+  ,"couldNotSaveProfile": "Could not save your profile"
+  ,"locationServicesOff": "Turn on location services to use your current location"
+  ,"locationPermissionNeeded": "Location permission is needed to get your location"
+  ,"locationPermissionBlocked": "Location permission is blocked. Allow it in app settings."
+  ,"locationRequestFailed": "Could not get your location. Please try again."
+  ,"cameraPermissionBlocked": "Camera access is blocked. Allow it in app settings."
+  ,"photosPermissionBlocked": "Photos access is blocked. Allow it in app settings."
+  ,"cameraRestricted": "Camera access is restricted on this device"
+  ,"noCameraAvailable": "No camera is available on this device"
+  ,"imagePickFailed": "Could not pick the picture. Please try again."
+  ,"am": "AM"
+  ,"pm": "PM"
+  ,"connectionTimedOut": "Connection timed out. Please try again."
+  ,"serverUnavailable": "Could not reach the server. Check your internet connection."
+}

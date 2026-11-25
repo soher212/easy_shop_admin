@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
 import 'package:easy_shop_admin/core/widgets/pick_image_sheet.dart';
@@ -62,7 +63,9 @@ class ProfilePicturePicker extends StatelessWidget {
               ),
               const SizedBox(width: 6),
               Text(
-                picture == null ? 'Upload photo' : 'Change photo',
+                picture == null
+                    ? context.l10n.uploadPhoto
+                    : context.l10n.changePhoto,
                 style: AppTextStyles.body.copyWith(
                   color: AppColors.primary,
                   fontWeight: FontWeight.w600,

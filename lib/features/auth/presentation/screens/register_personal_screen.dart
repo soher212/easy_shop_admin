@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/helpers/validators.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/routes/routes.dart';
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
@@ -68,7 +69,7 @@ class _RegisterPersonalScreenState extends State<RegisterPersonalScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Create Account')),
+      appBar: AppBar(title: Text(context.l10n.createAccount)),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(AppDimensions.screenPadding),
@@ -77,63 +78,71 @@ class _RegisterPersonalScreenState extends State<RegisterPersonalScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const StepProgressBar(currentStep: 1, stepName: 'Personal'),
+                StepProgressBar(
+                  currentStep: 1,
+                  stepName: context.l10n.stepPersonal,
+                ),
                 const SizedBox(height: AppDimensions.spaceMedium),
-                const Text('Personal Information', style: AppTextStyles.title),
+                Text(
+                  context.l10n.personalInformation,
+                  style: AppTextStyles.title,
+                ),
                 const SizedBox(height: AppDimensions.spaceMedium),
                 AppTextField(
-                  label: 'Full Name',
-                  hint: 'Ahmed Khalil',
+                  label: context.l10n.fullName,
+                  hint: context.l10n.fullName,
                   controller: _nameController,
-                  validator: Validators.fullName,
+                  validator: (value) =>
+                      Validators.fullName(value, context.l10n),
                   keyboardType: TextInputType.name,
                   textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(height: AppDimensions.spaceMedium),
                 AppTextField(
-                  label: 'Email',
+                  label: context.l10n.email,
                   hint: 'ahmed@business.com',
                   controller: _emailController,
-                  validator: Validators.email,
+                  validator: (value) => Validators.email(value, context.l10n),
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(height: AppDimensions.spaceMedium),
                 AppTextField(
-                  label: 'Phone Number',
+                  label: context.l10n.phoneNumber,
                   hint: '+20 100 000 0000',
                   controller: _phoneController,
-                  validator: Validators.phone,
+                  validator: (value) => Validators.phone(value, context.l10n),
                   keyboardType: TextInputType.phone,
                   textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(height: AppDimensions.spaceMedium),
                 AppTextField(
-                  label: 'National ID',
-                  hint: '14-digit national ID',
+                  label: context.l10n.nationalId,
+                  hint: context.l10n.nationalId,
                   controller: _nationalIdController,
-                  validator: Validators.nationalId,
+                  validator: (value) =>
+                      Validators.nationalId(value, context.l10n),
                   keyboardType: TextInputType.number,
                   textInputAction: TextInputAction.done,
                 ),
                 const SizedBox(height: AppDimensions.spaceLarge),
                 AppButton(
-                  label: 'Continue',
+                  label: context.l10n.continueLabel,
                   onPressed: _canContinue ? _continue : null,
                 ),
                 const SizedBox(height: AppDimensions.spaceMedium),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      'Already have an account? ',
+                    Text(
+                      '${context.l10n.alreadyHaveAccount} ',
                       style: AppTextStyles.caption,
                     ),
                     GestureDetector(
                       onTap: () =>
                           Navigator.pushReplacementNamed(context, Routes.login),
                       child: Text(
-                        'Sign in',
+                        context.l10n.signIn,
                         style: AppTextStyles.body.copyWith(
                           color: AppColors.primary,
                           fontWeight: FontWeight.w700,

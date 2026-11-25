@@ -1,4 +1,5 @@
-import 'package:easy_shop_admin/core/helpers/greeting.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
+import 'package:easy_shop_admin/core/localization/language_switcher.dart';
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
@@ -34,7 +35,7 @@ class HomeHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                greetingFor(DateTime.now()),
+                _greetingFor(DateTime.now(), context),
                 style: AppTextStyles.caption.copyWith(color: white70),
               ),
               Text(
@@ -53,6 +54,8 @@ class HomeHeader extends StatelessWidget {
             ],
           ),
         ),
+        const SizedBox(width: 8),
+        const LanguageSwitcher(),
         Container(
           width: 40,
           height: 40,
@@ -68,4 +71,10 @@ class HomeHeader extends StatelessWidget {
       ],
     );
   }
+}
+
+String _greetingFor(DateTime now, BuildContext context) {
+  if (now.hour < 12) return context.l10n.goodMorning;
+  if (now.hour < 17) return context.l10n.goodAfternoon;
+  return context.l10n.goodEvening;
 }

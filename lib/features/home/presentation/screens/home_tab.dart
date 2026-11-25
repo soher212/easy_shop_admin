@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
 import 'package:easy_shop_admin/core/widgets/error_view.dart';
@@ -119,17 +120,20 @@ class _Content extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const SectionHeader(title: 'Quick Actions'),
+                SectionHeader(title: context.l10n.quickActions),
                 gap,
                 QuickActions(
                   onAddProduct: onAddProduct,
                   onCategories: onCategories,
                 ),
                 const SizedBox(height: AppDimensions.spaceLarge),
-                SectionHeader(title: 'Recent Orders', onSeeAll: onSeeAllOrders),
+                SectionHeader(
+                  title: context.l10n.recentOrders,
+                  onSeeAll: onSeeAllOrders,
+                ),
                 gap,
                 if (dashboard.orders.isEmpty)
-                  const _EmptyText('No orders yet')
+                  _EmptyText(context.l10n.noOrdersYet)
                 else
                   for (final order in dashboard.orders.take(
                     HomeTab._recentOrdersCount,
@@ -139,12 +143,12 @@ class _Content extends StatelessWidget {
                   ],
                 const SizedBox(height: AppDimensions.spaceSmall),
                 SectionHeader(
-                  title: 'Products Overview',
+                  title: context.l10n.productsOverview,
                   onSeeAll: onSeeAllProducts,
                 ),
                 gap,
                 if (dashboard.products.isEmpty)
-                  const _EmptyText('No products yet')
+                  _EmptyText(context.l10n.noProductsYet)
                 else
                   for (final product in dashboard.products.take(
                     HomeTab._overviewProductsCount,

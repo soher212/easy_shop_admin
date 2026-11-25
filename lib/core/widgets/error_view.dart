@@ -1,4 +1,6 @@
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
+import 'package:easy_shop_admin/core/localization/localize_message.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -19,12 +21,12 @@ class ErrorView extends StatelessWidget {
             const Icon(Icons.wifi_off_rounded, size: 48),
             const SizedBox(height: AppDimensions.spaceMedium),
             Text(
-              message,
+              localizeAppMessage(context, message),
               textAlign: TextAlign.center,
               style: AppTextStyles.body,
             ),
             const SizedBox(height: AppDimensions.spaceMedium),
-            OutlinedButton(onPressed: onRetry, child: const Text('Retry')),
+            OutlinedButton(onPressed: onRetry, child: Text(context.l10n.retry)),
           ],
         ),
       ),

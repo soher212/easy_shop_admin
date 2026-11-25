@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
 import 'package:easy_shop_admin/core/widgets/app_image.dart';
@@ -33,11 +34,14 @@ class ProductImagePicker extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
       onTap: () => _pick(context),
-      child: DashedBorder(radius: AppDimensions.radiusCard, child: _content()),
+      child: DashedBorder(
+        radius: AppDimensions.radiusCard,
+        child: _content(context),
+      ),
     );
   }
 
-  Widget _content() {
+  Widget _content(BuildContext context) {
     final radius = BorderRadius.circular(AppDimensions.radiusCard);
     if (image != null) {
       return Container(
@@ -73,8 +77,8 @@ class ProductImagePicker extends StatelessWidget {
             color: AppColors.textGrey,
           ),
           const SizedBox(height: AppDimensions.spaceSmall),
-          const Text(
-            'Add product image (optional)',
+          Text(
+            context.l10n.addProductImageOptional,
             style: AppTextStyles.caption,
           ),
         ],

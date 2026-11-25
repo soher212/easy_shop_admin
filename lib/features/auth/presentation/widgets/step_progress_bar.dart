@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class StepProgressBar extends StatelessWidget {
         ),
         const SizedBox(height: AppDimensions.spaceSmall),
         Text(
-          'Step $currentStep of $totalSteps — $stepName',
+          context.l10n.stepProgress('$currentStep', '$totalSteps', stepName),
           style: AppTextStyles.caption,
         ),
       ],

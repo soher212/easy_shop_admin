@@ -11,19 +11,20 @@ class ReverseGeocoder {
       baseUrl: 'https://nominatim.openstreetmap.org',
       connectTimeout: const Duration(seconds: 8),
       receiveTimeout: const Duration(seconds: 8),
-      headers: {
-        'User-Agent': 'com.example.easy_shop_admin',
-        'Accept-Language': 'en',
-      },
+      headers: {'User-Agent': 'com.example.easy_shop_admin'},
     ),
   );
 
   static final Map<String, String?> _cache = {};
 
   // Null when the place can't be resolved (no internet, open sea, ...).
-  static Future<String?> labelFor(double latitude, double longitude) async {
+  static Future<String?> labelFor(
+    double latitude,
+    double longitude, {
+    String languageCode = 'en',
+  }) async {
     final key =
-        '${latitude.toStringAsFixed(3)},${longitude.toStringAsFixed(3)}';
+        '$languageCode:${latitude.toStringAsFixed(3)},${longitude.toStringAsFixed(3)}';
     if (_cache.containsKey(key)) return _cache[key];
 
     try {
@@ -36,6 +37,7 @@ class ReverseGeocoder {
           'zoom': 10,
           'addressdetails': 1,
         },
+        options: Options(headers: {'Accept-Language': languageCode}),
       );
       final label = labelFromResponse(response.data);
       _cache[key] = label;

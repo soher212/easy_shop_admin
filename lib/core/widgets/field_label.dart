@@ -1,5 +1,6 @@
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:flutter/material.dart';
 
 class FieldLabel extends StatelessWidget {
@@ -16,8 +17,8 @@ class FieldLabel extends StatelessWidget {
         style: AppTextStyles.body.copyWith(fontWeight: FontWeight.w600),
         children: [
           if (isOptional)
-            const TextSpan(
-              text: ' (Optional)',
+            TextSpan(
+              text: ' (${context.l10n.optional})',
               style: TextStyle(
                 color: AppColors.textGrey,
                 fontWeight: FontWeight.w400,

@@ -1,0 +1,219 @@
+{
+  "@@locale": "ar",
+  "appTitle": "إيزي شوب للتاجر",
+  "english": "English",
+  "arabic": "العربية",
+  "changeLanguage": "اللغة",
+  "home": "الرئيسية",
+  "products": "المنتجات",
+  "orders": "الطلبات",
+  "profile": "الملف الشخصي",
+  "categories": "الفئات",
+  "retry": "إعادة المحاولة",
+  "cancel": "إلغاء",
+  "delete": "حذف",
+  "saveChanges": "حفظ التغييرات",
+  "addProduct": "إضافة منتج",
+  "editProduct": "تعديل المنتج",
+  "addCategory": "إضافة فئة",
+  "editCategory": "تعديل الفئة",
+  "createCategory": "إنشاء فئة",
+  "createAccount": "إنشاء حساب",
+  "continueLabel": "متابعة",
+  "signIn": "تسجيل الدخول",
+  "signOut": "تسجيل الخروج",
+  "welcomeBack": "مرحبًا بعودتك",
+  "welcome": "مرحبًا",
+  "email": "البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "confirmPassword": "تأكيد كلمة المرور",
+  "fullName": "الاسم الكامل",
+  "phoneNumber": "رقم الهاتف",
+  "nationalId": "الرقم الوطني",
+  "businessName": "اسم النشاط التجاري",
+  "businessAddress": "عنوان النشاط التجاري",
+  "storeLocation": "موقع المتجر",
+  "commercialRegister": "السجل التجاري",
+  "taxCard": "البطاقة الضريبية",
+  "personalInformation": "المعلومات الشخصية",
+  "businessInformation": "معلومات النشاط التجاري",
+  "security": "الأمان",
+  "description": "الوصف",
+  "categoryName": "اسم الفئة",
+  "productName": "اسم المنتج",
+  "price": "السعر",
+  "quantity": "الكمية",
+  "visible": "ظاهر",
+  "hidden": "مخفي",
+  "pending": "قيد الانتظار",
+  "processing": "قيد المعالجة",
+  "completed": "مكتمل",
+  "cancelled": "ملغي",
+  "card": "بطاقة",
+  "cash": "نقدًا",
+  "noOrdersYet": "لا توجد طلبات بعد",
+  "noProductsYet": "لا توجد منتجات بعد",
+  "noCategoriesYet": "لا توجد فئات بعد",
+  "quickActions": "إجراءات سريعة",
+  "recentOrders": "الطلبات الأخيرة",
+  "productsOverview": "نظرة عامة على المنتجات",
+  "totalProducts": "إجمالي المنتجات",
+  "totalOrders": "إجمالي الطلبات",
+  "pendingOrders": "الطلبات قيد الانتظار",
+  "addProductAction": "إضافة منتج",
+  "selectLocation": "تحديد الموقع",
+  "confirmLocation": "تأكيد الموقع",
+  "deliveryLocation": "موقع التوصيل",
+  "orderDetails": "تفاصيل الطلب",
+  "productDetails": "تفاصيل المنتج",
+  "editProfile": "تعديل الملف الشخصي",
+  "save": "حفظ",
+  "deleteProductQuestion": "حذف المنتج؟",
+  "deleteCategoryQuestion": "حذف الفئة؟",
+  "takePhoto": "التقاط صورة",
+  "chooseFromGallery": "اختيار من المعرض",
+  "permissionNeeded": "الإذن مطلوب",
+  "locationBlocked": "تم حظر الوصول إلى الموقع",
+  "notNow": "ليس الآن",
+  "openSettings": "فتح الإعدادات",
+  "pageNotFound": "الصفحة غير موجودة",
+  "unknownRouteMessage": "تعذر العثور على هذه الصفحة.",
+  "verifyEmail": "تأكيد البريد الإلكتروني",
+  "checkYourEmail": "تحقق من بريدك الإلكتروني",
+  "verify": "تأكيد",
+  "resendCode": "إعادة إرسال الرمز",
+  "emailRequired": "البريد الإلكتروني مطلوب",
+  "validEmail": "أدخل بريدًا إلكترونيًا صحيحًا",
+  "fullNameRequired": "الاسم الكامل مطلوب",
+  "enterFullName": "أدخل الاسم الأول واسم العائلة",
+  "phoneRequired": "رقم الهاتف مطلوب",
+  "phoneFormat": "يجب أن يبدأ الهاتف بـ +20 ويتبعه 10 أرقام",
+  "nationalIdRequired": "الرقم الوطني مطلوب",
+  "nationalIdFormat": "يجب أن يتكون الرقم الوطني من 14 رقمًا ويبدأ بـ 2 أو 3",
+  "passwordRequired": "كلمة المرور مطلوبة",
+  "passwordLength": "يجب ألا تقل كلمة المرور عن 6 أحرف",
+  "confirmPasswordRequired": "يرجى تأكيد كلمة المرور",
+  "passwordMismatch": "كلمتا المرور غير متطابقتين",
+  "validPrice": "أدخل سعرًا صحيحًا",
+  "positivePrice": "يجب أن يكون السعر أكبر من صفر",
+  "wholeNumber": "أدخل عددًا صحيحًا",
+  "nonNegativeQuantity": "لا يمكن أن تكون الكمية سالبة",
+  "businessDocuments": "مستندات النشاط التجاري",
+  "delivery": "التوصيل",
+  "customer": "العميل",
+  "orderItems": "عناصر الطلب",
+  "payment": "الدفع",
+  "summary": "الملخص",
+  "total": "الإجمالي",
+  "visibility": "الظهور",
+  "inStock": "متوفر",
+  "edit": "تعديل",
+  "deleteCategoryWarning": "تحتوي هذه الفئة على {count} منتج/منتجات. حذفها سيؤثر على هذه المنتجات أيضًا.",
+  "@deleteCategoryWarning": { "placeholders": { "count": { "type": "String" } } },
+  "searchProducts": "ابحث عن المنتجات...",
+  "searchOrders": "ابحث عن الطلبات...",
+  "welcomeMerchant": "مرحبًا بك في إيزي شوب",
+  "createStoreAccount": "أنشئ حساب متجرك",
+  "alreadyHaveAccount": "لديك حساب بالفعل؟",
+  "newMerchant": "تاجر جديد؟",
+  "createOne": "أنشئ حسابًا",
+  "forgotPassword": "هل نسيت كلمة المرور؟",
+  "selectCategory": "اختر فئة",
+  "deleteCategory": "حذف الفئة",
+  "deleteProduct": "حذف المنتج",
+  "requestFailed": "حدث خطأ. يرجى المحاولة مرة أخرى.",
+  "addressUnavailable": "العنوان غير متاح",
+  "stepPersonal": "المعلومات الشخصية",
+  "stepBusiness": "معلومات النشاط التجاري",
+  "stepSecurity": "الأمان",
+  "confirmDelete": "هل أنت متأكد من حذف هذا العنصر؟",
+  "noData": "لا توجد بيانات"
+  ,"optional": "اختياري"
+  ,"requiredField": "حقل {field} مطلوب"
+  ,"@requiredField": { "placeholders": { "field": { "type": "String" } } }
+  ,"noProductsMatchSearch": "لا توجد منتجات تطابق البحث"
+  ,"selectCategoryError": "اختر فئة"
+  ,"businessNameRequired": "اسم النشاط التجاري مطلوب"
+  ,"locationSet": "تم تحديد الموقع"
+  ,"tapToSetLocation": "اضغط لتحديد موقع المتجر"
+  ,"uploadCommercialRegister": "رفع السجل التجاري"
+  ,"commercialRegisterUploaded": "تم رفع السجل التجاري"
+  ,"uploadTaxCard": "رفع البطاقة الضريبية"
+  ,"taxCardUploaded": "تم رفع البطاقة الضريبية"
+  ,"deleteProductMessage": "سيتم حذف {name} من متجرك. لا يمكن التراجع عن هذا الإجراء."
+  ,"@deleteProductMessage": { "placeholders": { "name": { "type": "String" } } }
+  ,"categoryDeleteWithProducts": "تحتوي الفئة {name} على {count} منتج/منتجات. قد يؤثر حذفها على هذه المنتجات أيضًا. لا يمكن التراجع عن هذا الإجراء."
+  ,"@categoryDeleteWithProducts": { "placeholders": { "name": { "type": "String" }, "count": { "type": "String" } } }
+  ,"categoryDeleteEmpty": "سيتم حذف {name}. لا يمكن التراجع عن هذا الإجراء."
+  ,"@categoryDeleteEmpty": { "placeholders": { "name": { "type": "String" } } }
+  ,"profilePicture": "الصورة الشخصية"
+  ,"signInDescription": "سجّل الدخول لإدارة متجرك"
+  ,"forBusiness": "للتجار"
+  ,"signInLink": "تسجيل الدخول"
+  ,"tapToChooseLocation": "اضغط لتحديد موقع المتجر"
+  ,"category": "الفئة"
+  ,"merchantLabel": "التاجر"
+  ,"goodMorning": "صباح الخير،"
+  ,"goodAfternoon": "طاب يومك،"
+  ,"goodEvening": "مساء الخير،"
+  ,"qtyValue": "الكمية {quantity}"
+  ,"@qtyValue": { "placeholders": { "quantity": { "type": "String" } } }
+  ,"seeAll": "عرض الكل"
+  ,"removeImage": "إزالة الصورة"
+  ,"uploadProductImage": "رفع صورة المنتج"
+  ,"editProductImage": "تعديل صورة المنتج"
+  ,"selectImage": "اختيار صورة"
+  ,"location": "الموقع"
+  ,"locationPermissionMessage": "اسمح بالوصول إلى الموقع من الإعدادات لتحديد الموقع."
+  ,"product": "المنتج"
+  ,"stock": "المخزون"
+  ,"orderCode": "الطلب رقم {code}"
+  ,"@orderCode": { "placeholders": { "code": { "type": "String" } } }
+  ,"visibleToCustomers": "ظاهر للعملاء"
+  ,"showProductInStore": "إظهار هذا المنتج في متجرك"
+  ,"addProductImageOptional": "إضافة صورة للمنتج (اختياري)"
+  ,"itemCount": "{count} عناصر"
+  ,"@itemCount": { "placeholders": { "count": { "type": "String" } } }
+  ,"oneItem": "عنصر واحد"
+  ,"noAddressProvided": "لم يُضف عنوان"
+  ,"viewOnMap": "عرض على الخريطة"
+  ,"tapMapToChoose": "اضغط على الخريطة لتحديد الموقع"
+  ,"findingPlaceName": "جارٍ البحث عن اسم المكان..."
+  ,"atTime": " في "
+  ,"merchantPortal": "بوابة التاجر"
+  ,"profileLoadFailed": "تعذر تحميل الملف الشخصي."
+  ,"imageUploadFailed": "تعذر رفع الصورة."
+  ,"added": "تاريخ الإضافة"
+  ,"verificationCodeSent": "أرسلنا رمز تحقق من 6 أرقام إلى\n{email}"
+  ,"@verificationCodeSent": { "placeholders": { "email": { "type": "String" } } }
+  ,"uploaded": "تم الرفع"
+  ,"notUploaded": "لم يتم الرفع"
+  ,"stepProgress": "الخطوة {current} من {total} — {name}"
+  ,"@stepProgress": { "placeholders": { "current": { "type": "String" }, "total": { "type": "String" }, "name": { "type": "String" } } }
+  ,"locationUnavailable": "الموقع غير متاح."
+  ,"codeExpired": "انتهت صلاحية الرمز"
+  ,"codeExpiresIn": "تنتهي صلاحية الرمز خلال "
+  ,"manageCategories": "إدارة الفئات"
+  ,"briefDescription": "وصف مختصر..."
+  ,"enterPassword": "أدخل كلمة المرور"
+  ,"strongPasswordHint": "أنشئ كلمة مرور قوية"
+  ,"repeatPasswordHint": "أعد إدخال كلمة المرور"
+  ,"optionalProductDescription": "وصف اختياري للمنتج..."
+  ,"locationUpdated": "اضغط لتحديث الموقع"
+  ,"uploadPhoto": "رفع صورة"
+  ,"changePhoto": "تغيير الصورة"
+  ,"couldNotSaveProfile": "تعذر حفظ الملف الشخصي"
+  ,"locationServicesOff": "فعّل خدمات الموقع لاستخدام موقعك الحالي"
+  ,"locationPermissionNeeded": "إذن الموقع مطلوب لتحديد موقعك"
+  ,"locationPermissionBlocked": "إذن الموقع محظور. اسمح به من إعدادات التطبيق."
+  ,"locationRequestFailed": "تعذر تحديد موقعك. يرجى المحاولة مرة أخرى."
+  ,"cameraPermissionBlocked": "إذن الكاميرا محظور. اسمح به من إعدادات التطبيق."
+  ,"photosPermissionBlocked": "إذن الصور محظور. اسمح به من إعدادات التطبيق."
+  ,"cameraRestricted": "استخدام الكاميرا مقيّد على هذا الجهاز"
+  ,"noCameraAvailable": "لا توجد كاميرا متاحة على هذا الجهاز"
+  ,"imagePickFailed": "تعذر اختيار الصورة. يرجى المحاولة مرة أخرى."
+  ,"am": "صباحًا"
+  ,"pm": "مساءً"
+  ,"connectionTimedOut": "انتهت مهلة الاتصال. يرجى المحاولة مرة أخرى."
+  ,"serverUnavailable": "تعذر الوصول إلى الخادم. تحقق من اتصال الإنترنت."
+}

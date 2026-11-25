@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -31,13 +32,13 @@ class VisibilitySwitchCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Visible to customers',
+                  context.l10n.visibleToCustomers,
                   style: AppTextStyles.body.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                const Text(
-                  'Show this product in your store',
+                Text(
+                  context.l10n.showProductInStore,
                   style: AppTextStyles.caption,
                 ),
               ],

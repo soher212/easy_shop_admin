@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/helpers/validators.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/widgets/app_button.dart';
@@ -65,30 +66,28 @@ class _CategoryFormScreenState extends State<CategoryFormScreen> {
     }
   }
 
-  String get _deleteMessage {
+  String _deleteMessage(BuildContext context) {
     final name = widget.category!.name;
     final count = widget.productsCount;
-    if (count == 0) return '"$name" will be removed. This cannot be undone.';
-    final products = count == 1 ? '1 product' : '$count products';
-    return '"$name" has $products. Deleting this category may also '
-        'affect them. This cannot be undone.';
+    if (count == 0) return context.l10n.categoryDeleteEmpty(name);
+    return context.l10n.categoryDeleteWithProducts(name, '$count');
   }
 
   Future<void> _confirmDelete() async {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Delete category?'),
-        content: Text(_deleteMessage),
+        title: Text(context.l10n.deleteCategoryQuestion),
+        content: Text(_deleteMessage(context)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(context.l10n.cancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
             style: TextButton.styleFrom(foregroundColor: AppColors.error),
-            child: const Text('Delete'),
+            child: Text(context.l10n.delete),
           ),
         ],
       ),
@@ -104,7 +103,7 @@ class _CategoryFormScreenState extends State<CategoryFormScreen> {
     } else if (state.status == CategoryFormStatus.failure) {
       showAppSnackBar(
         context,
-        state.message ?? 'Something went wrong',
+        state.message ?? context.l10n.requestFailed,
         isError: true,
       );
     }
@@ -114,7 +113,9 @@ class _CategoryFormScreenState extends State<CategoryFormScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_isEditing ? 'Edit Category' : 'Add Category'),
+        title: Text(
+          _isEditing ? context.l10n.editCategory : context.l10n.addCategory,
+        ),
       ),
       body: SafeArea(
         child: BlocConsumer<CategoryFormCubit, CategoryFormState>(
@@ -129,24 +130,29 @@ class _CategoryFormScreenState extends State<CategoryFormScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     AppTextField(
-                      label: 'Category Name',
+                      label: context.l10n.categoryName,
                       hint: 'e.g. Electronics',
                       controller: _nameController,
-                      validator: (value) =>
-                          Validators.required(value, 'Category name'),
+                      validator: (value) => Validators.required(
+                        value,
+                        context.l10n.categoryName,
+                        context.l10n,
+                      ),
                       textInputAction: TextInputAction.next,
                     ),
                     const SizedBox(height: AppDimensions.spaceMedium),
                     AppTextField(
-                      label: 'Description',
-                      hint: 'Brief description...',
+                      label: context.l10n.description,
+                      hint: context.l10n.briefDescription,
                       controller: _descriptionController,
                       isOptional: true,
                       maxLines: 2,
                     ),
                     const SizedBox(height: AppDimensions.spaceLarge),
                     AppButton(
-                      label: _isEditing ? 'Save Changes' : 'Create Category',
+                      label: _isEditing
+                          ? context.l10n.saveChanges
+                          : context.l10n.createCategory,
                       isLoading: isBusy,
                       onPressed: _canSubmit ? _submit : null,
                     ),
@@ -155,7 +161,7 @@ class _CategoryFormScreenState extends State<CategoryFormScreen> {
                       TextButton.icon(
                         onPressed: isBusy ? null : _confirmDelete,
                         icon: const Icon(Icons.delete_outline),
-                        label: const Text('Delete Category'),
+                        label: Text(context.l10n.deleteCategory),
                         style: TextButton.styleFrom(
                           foregroundColor: AppColors.error,
                         ),

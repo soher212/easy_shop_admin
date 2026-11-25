@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
 import 'package:easy_shop_admin/features/home/domain/entities/home_dashboard.dart';
@@ -30,7 +31,7 @@ class StatsCard extends StatelessWidget {
             children: [
               _StatTile(
                 value: dashboard.totalProducts,
-                label: 'Total Products',
+                label: context.l10n.totalProducts,
                 icon: Icons.inventory_2_outlined,
                 color: AppColors.primary,
                 background: AppColors.primaryLight,
@@ -38,7 +39,7 @@ class StatsCard extends StatelessWidget {
               const SizedBox(width: AppDimensions.spaceSmall + 4),
               _StatTile(
                 value: dashboard.totalOrders,
-                label: 'Total Orders',
+                label: context.l10n.totalOrders,
                 icon: Icons.shopping_bag_outlined,
                 color: AppColors.info,
                 background: AppColors.infoLight,
@@ -50,7 +51,7 @@ class StatsCard extends StatelessWidget {
             children: [
               _StatTile(
                 value: dashboard.pendingOrders,
-                label: 'Pending Orders',
+                label: context.l10n.pendingOrders,
                 icon: Icons.schedule,
                 color: AppColors.warning,
                 background: AppColors.warningLight,
@@ -58,7 +59,7 @@ class StatsCard extends StatelessWidget {
               const SizedBox(width: AppDimensions.spaceSmall + 4),
               _StatTile(
                 value: dashboard.categoriesCount,
-                label: 'Categories',
+                label: context.l10n.categories,
                 icon: Icons.sell_outlined,
                 color: AppColors.success,
                 background: AppColors.successLight,

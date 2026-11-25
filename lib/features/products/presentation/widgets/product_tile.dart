@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/helpers/format.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
@@ -42,20 +43,20 @@ class ProductTile extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      '${formatPrice(product.price)} · Qty ${product.quantity}',
+                      '${formatPrice(product.price)} · ${context.l10n.qtyValue('${product.quantity}')}',
                       style: AppTextStyles.caption,
                     ),
                   ],
                 ),
               ),
               product.isVisible
-                  ? const StatusBadge(
-                      label: 'Visible',
+                  ? StatusBadge(
+                      label: context.l10n.visible,
                       color: AppColors.success,
                       background: AppColors.successLight,
                     )
-                  : const StatusBadge(
-                      label: 'Hidden',
+                  : StatusBadge(
+                      label: context.l10n.hidden,
                       color: AppColors.textGrey,
                       background: AppColors.hiddenLight,
                     ),

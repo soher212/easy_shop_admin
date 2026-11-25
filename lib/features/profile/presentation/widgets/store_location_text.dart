@@ -19,13 +19,28 @@ class StoreLocationText extends StatefulWidget {
 }
 
 class _StoreLocationTextState extends State<StoreLocationText> {
-  late Future<String?> _label = _resolve();
+  late Future<String?> _label;
+  String? _localeCode;
 
-  Future<String?> _resolve() {
+  Future<String?> _resolve(String languageCode) {
     if (widget.latitude == null || widget.longitude == null) {
       return Future.value(null);
     }
-    return ReverseGeocoder.labelFor(widget.latitude!, widget.longitude!);
+    return ReverseGeocoder.labelFor(
+      widget.latitude!,
+      widget.longitude!,
+      languageCode: languageCode,
+    );
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final languageCode = Localizations.localeOf(context).languageCode;
+    if (_localeCode != languageCode) {
+      _localeCode = languageCode;
+      _label = _resolve(languageCode);
+    }
   }
 
   @override
@@ -33,7 +48,7 @@ class _StoreLocationTextState extends State<StoreLocationText> {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.latitude != widget.latitude ||
         oldWidget.longitude != widget.longitude) {
-      _label = _resolve();
+      _label = _resolve(_localeCode ?? 'en');
     }
   }
 

@@ -1,4 +1,5 @@
 import 'package:easy_shop_admin/core/theme/app_colors.dart';
+import 'package:easy_shop_admin/core/localization/app_localizations_context.dart';
 import 'package:easy_shop_admin/core/theme/app_dimensions.dart';
 import 'package:easy_shop_admin/core/theme/app_text_styles.dart';
 import 'package:easy_shop_admin/core/widgets/error_view.dart';
@@ -22,7 +23,7 @@ class OrdersScreen extends StatelessWidget {
             width: double.infinity,
             color: AppColors.surface,
             padding: const EdgeInsets.all(AppDimensions.screenPadding),
-            child: const Text('Orders', style: AppTextStyles.title),
+            child: Text(context.l10n.orders, style: AppTextStyles.title),
           ),
           const Divider(height: 1, color: AppColors.border),
           Expanded(
@@ -46,8 +47,8 @@ class OrdersScreen extends StatelessWidget {
 
   Widget _list(BuildContext context, List<OrderEntity> orders) {
     if (orders.isEmpty) {
-      return const Center(
-        child: Text('No orders yet', style: AppTextStyles.caption),
+      return Center(
+        child: Text(context.l10n.noOrdersYet, style: AppTextStyles.caption),
       );
     }
     return RefreshIndicator(
